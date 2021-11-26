@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		435325332750C7C2004D9162 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325322750C7C2004D9162 /* MainView.swift */; };
+		435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325342750C8AB004D9162 /* UreaSolutionManager.swift */; };
+		435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325362750CFBE004D9162 /* UreaSolutionResponse.swift */; };
+		4353253B2750F5A7004D9162 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353253A2750F5A7004D9162 /* RegionViewController.swift */; };
 		43A1E4A72750C5F8001815DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1E4A62750C5F8001815DD /* AppDelegate.swift */; };
 		43A1E4A92750C5F8001815DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1E4A82750C5F8001815DD /* SceneDelegate.swift */; };
-		43A1E4AB2750C5F8001815DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1E4AA2750C5F8001815DD /* ViewController.swift */; };
+		43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1E4AA2750C5F8001815DD /* MainViewController.swift */; };
 		43A1E4AE2750C5F8001815DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AC2750C5F8001815DD /* Main.storyboard */; };
 		43A1E4B02750C5FB001815DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AF2750C5FB001815DD /* Assets.xcassets */; };
 		43A1E4B32750C5FB001815DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */; };
+		48BCF0FB28D7D3256890E340 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3097AE21C3441FC1F39A9838 /* Pods-Urea Solution Inventory Status.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.release.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.release.xcconfig"; sourceTree = "<group>"; };
+		3F24408B9B73787EC6FBE12C /* Pods-Urea Solution Inventory Status.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.debug.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.debug.xcconfig"; sourceTree = "<group>"; };
+		435325322750C7C2004D9162 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		435325342750C8AB004D9162 /* UreaSolutionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionManager.swift; sourceTree = "<group>"; };
+		435325362750CFBE004D9162 /* UreaSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionResponse.swift; sourceTree = "<group>"; };
+		4353253A2750F5A7004D9162 /* RegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
 		43A1E4A32750C5F8001815DD /* Urea Solution Inventory Status.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Urea Solution Inventory Status.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A1E4A62750C5F8001815DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43A1E4A82750C5F8001815DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		43A1E4AA2750C5F8001815DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		43A1E4AA2750C5F8001815DD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		43A1E4AD2750C5F8001815DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A1E4AF2750C5FB001815DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A1E4B22750C5FB001815DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A1E4B42750C5FB001815DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Urea_Solution_Inventory_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,48 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BCF0FB28D7D3256890E340 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4353252F2750C72B004D9162 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				43A1E4AA2750C5F8001815DD /* MainViewController.swift */,
+				4353253A2750F5A7004D9162 /* RegionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		435325302750C738004D9162 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43A1E4AC2750C5F8001815DD /* Main.storyboard */,
+				43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */,
+				435325322750C7C2004D9162 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		435325312750C73E004D9162 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				435325342750C8AB004D9162 /* UreaSolutionManager.swift */,
+				435325362750CFBE004D9162 /* UreaSolutionResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		43A1E49A2750C5F8001815DD = {
 			isa = PBXGroup;
 			children = (
 				43A1E4A52750C5F8001815DD /* Urea Solution Inventory Status */,
 				43A1E4A42750C5F8001815DD /* Products */,
+				E54F3A09A260ED4B73939609 /* Pods */,
+				FE936759CFEDE62069C38EBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +99,32 @@
 		43A1E4A52750C5F8001815DD /* Urea Solution Inventory Status */ = {
 			isa = PBXGroup;
 			children = (
+				435325312750C73E004D9162 /* Model */,
+				435325302750C738004D9162 /* View */,
+				4353252F2750C72B004D9162 /* Controller */,
 				43A1E4A62750C5F8001815DD /* AppDelegate.swift */,
 				43A1E4A82750C5F8001815DD /* SceneDelegate.swift */,
-				43A1E4AA2750C5F8001815DD /* ViewController.swift */,
-				43A1E4AC2750C5F8001815DD /* Main.storyboard */,
 				43A1E4AF2750C5FB001815DD /* Assets.xcassets */,
-				43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */,
 				43A1E4B42750C5FB001815DD /* Info.plist */,
 			);
 			path = "Urea Solution Inventory Status";
+			sourceTree = "<group>";
+		};
+		E54F3A09A260ED4B73939609 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F24408B9B73787EC6FBE12C /* Pods-Urea Solution Inventory Status.debug.xcconfig */,
+				3097AE21C3441FC1F39A9838 /* Pods-Urea Solution Inventory Status.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE936759CFEDE62069C38EBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43A1E4B72750C5FB001815DD /* Build configuration list for PBXNativeTarget "Urea Solution Inventory Status" */;
 			buildPhases = (
+				11B584EE763F9A31314689C8 /* [CP] Check Pods Manifest.lock */,
 				43A1E49F2750C5F8001815DD /* Sources */,
 				43A1E4A02750C5F8001815DD /* Frameworks */,
 				43A1E4A12750C5F8001815DD /* Resources */,
+				A96774F1223EE35B71025CF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +195,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11B584EE763F9A31314689C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Urea Solution Inventory Status-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A96774F1223EE35B71025CF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43A1E49F2750C5F8001815DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43A1E4AB2750C5F8001815DD /* ViewController.swift in Sources */,
+				43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */,
+				435325332750C7C2004D9162 /* MainView.swift in Sources */,
+				4353253B2750F5A7004D9162 /* RegionViewController.swift in Sources */,
+				435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */,
 				43A1E4A72750C5F8001815DD /* AppDelegate.swift in Sources */,
+				435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */,
 				43A1E4A92750C5F8001815DD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +392,7 @@
 		};
 		43A1E4B82750C5FB001815DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F24408B9B73787EC6FBE12C /* Pods-Urea Solution Inventory Status.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,6 +422,7 @@
 		};
 		43A1E4B92750C5FB001815DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3097AE21C3441FC1F39A9838 /* Pods-Urea Solution Inventory Status.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
