@@ -11,6 +11,9 @@ struct UreaSolutionResponse: Decodable {
     let totalCount: Int
     let currentCount: Int
     let data: [UreaSolutionData]
+    let page: Int
+    let perPage: Int
+    let matchCount: Int
 }
 
 struct UreaSolutionData: Decodable {
@@ -22,4 +25,7 @@ struct UreaSolutionData: Decodable {
     let price: String
     let regDt: String
     let tel: String
+    let code: String
+    let lat: String
+    let lng: String
 }
