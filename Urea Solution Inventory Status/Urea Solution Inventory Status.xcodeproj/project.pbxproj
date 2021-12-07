@@ -20,6 +20,8 @@
 		43A1E4AE2750C5F8001815DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AC2750C5F8001815DD /* Main.storyboard */; };
 		43A1E4B02750C5FB001815DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AF2750C5FB001815DD /* Assets.xcassets */; };
 		43A1E4B32750C5FB001815DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */; };
+		43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E3275F54B9004F0D15 /* SpecificViewController.swift */; };
+		43D862E7275F55C1004F0D15 /* SpecificViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */; };
 		48BCF0FB28D7D3256890E340 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		43A1E4AF2750C5FB001815DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A1E4B22750C5FB001815DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A1E4B42750C5FB001815DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43D862E3275F54B9004F0D15 /* SpecificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewController.swift; sourceTree = "<group>"; };
+		43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewModel.swift; sourceTree = "<group>"; };
 		9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Urea_Solution_Inventory_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				430E3619275B504300DF3977 /* LocationViewModel.swift */,
+				43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -81,9 +86,10 @@
 		4353252F2750C72B004D9162 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				43D862E5275F54CA004F0D15 /* Cell */,
 				43A1E4AA2750C5F8001815DD /* MainViewController.swift */,
 				4353253A2750F5A7004D9162 /* LocationViewController.swift */,
-				4353254727578BAA004D9162 /* LocationTableViewCell.swift */,
+				43D862E3275F54B9004F0D15 /* SpecificViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +147,14 @@
 				4353252F2750C72B004D9162 /* Controller */,
 			);
 			path = "Urea Solution Inventory Status";
+			sourceTree = "<group>";
+		};
+		43D862E5275F54CA004F0D15 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4353254727578BAA004D9162 /* LocationTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E54F3A09A260ED4B73939609 /* Pods */ = {
@@ -281,7 +295,9 @@
 				4353254827578BAA004D9162 /* LocationTableViewCell.swift in Sources */,
 				430E361A275B504300DF3977 /* LocationViewModel.swift in Sources */,
 				4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */,
+				43D862E7275F55C1004F0D15 /* SpecificViewModel.swift in Sources */,
 				435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */,
+				43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */,
 				43A1E4A72750C5F8001815DD /* AppDelegate.swift in Sources */,
 				435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */,
 				43A1E4A92750C5F8001815DD /* SceneDelegate.swift in Sources */,

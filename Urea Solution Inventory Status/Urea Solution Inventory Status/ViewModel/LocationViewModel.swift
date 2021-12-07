@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 class LocationViewModel {
     
@@ -15,27 +16,13 @@ class LocationViewModel {
     
     let ureaSolutionDataCount: Int = 0
     
-    func setCityName(_ city: String) {
-        cityName = city
-    }
-    
     init(cityName: String) {
         self.cityName = cityName
-        _ = UreaSolutionManager.shared.fetchDataRx("")
+        print("viewmodel init : \(cityName)")
+        _ = UreaSolutionManager.shared.fetchDataRx(cityName)
             .map { data in
-                var fetchResults: [UreaSolutionData] = []
-                do {
-                    let result = try JSONDecoder().decode(UreaSolutionResponse.self, from: data)
-                    print(result)
-
-                    fetchResults.append(contentsOf: result.data)
-                }
-                catch {
-                    print(error.localizedDescription)
-                }
-                return fetchResults
+                return data
             }
-            
             .bind(to: dataObservable)
     }
 }

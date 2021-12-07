@@ -11,10 +11,9 @@ import RxSwift
 import RxCocoa
 
 class LocationViewController: UIViewController {
-    
+    private var cityName = ""
     private lazy var viewModel = LocationViewModel(cityName: cityName)
     private let disposeBag = DisposeBag()
-    private var cityName = ""
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -25,7 +24,8 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        kk()
+        
+        cityName = title!
         setUpTableView()
         bindViewModel()
     }
@@ -34,31 +34,10 @@ class LocationViewController: UIViewController {
         viewModel.dataObservable
             .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: LocationTableViewCell.idenrifier, cellType: LocationTableViewCell.self)) { index, item, cell in
-                cell.textLabel?.text = item.name
-                cell.textLabel?.textColor = .blue
+                cell.textLabel?.text = "\(item.name) (\(item.inventory))"
+                cell.textLabel?.textColor = .black
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func kk() {
-        guard let cities = title else {
-            return
-        }
-        let city = cities.replacingOccurrences(of: " ", with: "")
-        print(city)
-        if city.contains("/") {
-            let cityArray = city.components(separatedBy: "/")
-            print(cityArray)
-            for c in cityArray {
-                viewModel.setCityName(c)
-//                cityName = c
-            }
-        }
-        else {
-            viewModel.setCityName(city)
-//            cityName = city
-        }
-        print(cityName)
     }
     
     private func setUpTableView() {
@@ -74,5 +53,11 @@ class LocationViewController: UIViewController {
 
 //MARK: - UITableViewDelegate
 extension LocationViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(tableView)
+        
+        let vc = SpecificViewController()
+        present(vc, animated: true, completion: nil)
+    }
 }

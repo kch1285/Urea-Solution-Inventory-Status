@@ -21,8 +21,8 @@ struct UreaSolutionData: Decodable {
     let color: String
     let inventory: String
     let name: String
-    let openTime: String
-    let price: String
+    let openTime: String?
+    let price: String?
     let regDt: String
     let tel: String
     let code: String

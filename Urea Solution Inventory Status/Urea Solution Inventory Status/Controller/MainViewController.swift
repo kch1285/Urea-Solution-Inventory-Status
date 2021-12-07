@@ -10,95 +10,33 @@ import Lottie
 import SnapKit
 
 class MainViewController: UIViewController {
+    private let locations: [String] = ["경기", "인천", "충남", "충북",
+                                       "세종", "전남", "전북", "광주",
+                                       "경북", "대구", "경남", "부산",
+                                       "울산", "강원"
+    ]
     
     let animationView: AnimationView = {
         let view = AnimationView(name: "water_animation")
         view.contentMode = .scaleAspectFit
+        view.backgroundBehavior = .stop
         view.loopMode = .loop
         return view
     }()
-    
-    let searchField: UITextField = {
-        let field = UITextField()
-        let placeholder = NSMutableAttributedString(string: "검색어를 입력해주세요.")
-        placeholder.addAttribute(.foregroundColor, value: UIColor.systemGray2, range: NSRange(0...11))
-        field.attributedPlaceholder = placeholder
-        field.textColor = .red
-        return field
-    }()
-    
-    private let gyeonginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("경기 / 인천", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    private let chungcheongButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("충남 / 충북 / 세종", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    private let jeollaButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("전남 / 전북 / 광주", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    private let gyeongbukButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("경북 / 대구", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    private let gyeongnamButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("경남 / 부산 / 울산", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    private let gangwonButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("강원", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
+//
+//    let searchField: UITextField = {
+//        let field = UITextField()
+//        let placeholder = NSMutableAttributedString(string: "검색어를 입력해주세요.")
+//        placeholder.addAttribute(.foregroundColor, value: UIColor.systemGray2, range: NSRange(0...11))
+//        field.attributedPlaceholder = placeholder
+//        field.textColor = .red
+//        return field
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpMainView()
-        setUpLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,67 +49,55 @@ class MainViewController: UIViewController {
     
     
     private func setUpMainView() {
+        let buttonSize = (view.frame.size.width - 100) / 4
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         
         view.addSubview(animationView)
-        view.addSubview(searchField)
-        view.addSubview(gyeonginButton)
-        view.addSubview(chungcheongButton)
-        view.addSubview(jeollaButton)
-        view.addSubview(gyeongbukButton)
-        view.addSubview(gyeongnamButton)
-        view.addSubview(gangwonButton)
-        
-        gyeonginButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        chungcheongButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        jeollaButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        gyeongbukButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        gyeongnamButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        gangwonButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-    }
-    
-    private func setUpLayout() {
-        let buttonSize = (view.frame.size.width - 40) / 3
         animationView.snp.makeConstraints { make in
-            make.width.height.equalTo(200)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(view.frame.height * 0.15)
+            make.width.equalTo((view.frame.size.width - 60) / 2)
+            make.height.equalTo((view.frame.size.width * 3 - 160) / 4)
+            make.center.equalToSuperview()
         }
         
-        chungcheongButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().dividedBy(2).offset(10)
-        }
-        
-        gyeonginButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.top.equalTo(chungcheongButton)
-            make.trailing.equalTo(chungcheongButton.snp.leading).offset(-10)
-        }
-        
-        jeollaButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.top.equalTo(chungcheongButton)
-            make.leading.equalTo(chungcheongButton.snp.trailing).offset(10)
-        }
-        
-        gyeongnamButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.top.equalTo(chungcheongButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
-        
-        gyeongbukButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.top.equalTo(gyeongnamButton)
-            make.trailing.equalTo(gyeongnamButton.snp.leading).offset(-10)
-        }
-        
-        gangwonButton.snp.makeConstraints { make in
-            make.width.height.equalTo(buttonSize)
-            make.top.equalTo(gyeongnamButton)
-            make.leading.equalTo(gyeongnamButton.snp.trailing).offset(10)
+        for (index, location) in locations.enumerated() {
+            let button = UIButton()
+            button.setTitle(location, for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.masksToBounds = true
+            button.layer.cornerRadius = 8
+            button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+            view.addSubview(button)
+            
+            if index < 4 {
+                button.snp.makeConstraints { make in
+                    make.width.height.equalTo(buttonSize)
+                    make.bottom.equalTo(animationView.snp.top).offset(-20)
+                    make.leading.equalToSuperview().offset(20 * (index + 1) + (Int(buttonSize) * index))
+                }
+            }
+            else if index < 10 {
+                button.snp.makeConstraints { make in
+                    make.width.height.equalTo(buttonSize)
+
+                    if index % 2 == 0 {
+                        make.trailing.equalTo(animationView.snp.leading).offset(-20)
+                        make.top.equalTo(animationView).offset((20 + Int(buttonSize)) * ((index - 4)) / 2)
+                    }
+                    else {
+                        make.leading.equalTo(animationView.snp.trailing).offset(20)
+                        make.top.equalTo(animationView).offset((20 + Int(buttonSize)) * ((index - 5)) / 2)
+                    }
+                }
+            }
+            else {
+                button.snp.makeConstraints { make in
+                    make.width.height.equalTo(buttonSize)
+                    make.top.equalTo(animationView.snp.bottom).offset(20)
+                    make.leading.equalToSuperview().offset(20 * (index - 9) + (Int(buttonSize) * (index - 10)))
+                }
+            }
         }
     }
     
