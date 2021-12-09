@@ -21,7 +21,13 @@
 		43A1E4B02750C5FB001815DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AF2750C5FB001815DD /* Assets.xcassets */; };
 		43A1E4B32750C5FB001815DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */; };
 		43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E3275F54B9004F0D15 /* SpecificViewController.swift */; };
-		43D862E7275F55C1004F0D15 /* SpecificViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */; };
+		43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E9276212A4004F0D15 /* SpecificView.swift */; };
+		43D862EE27621FBE004F0D15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862ED27621FBE004F0D15 /* Constants.swift */; };
+		43D862F127622AE8004F0D15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43D862F327622AE8004F0D15 /* InfoPlist.strings */; };
+		43D862F827622EF2004F0D15 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D862F727622EF2004F0D15 /* GowunBatang-Regular.ttf */; };
+		43D862FA27623077004F0D15 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D862F927623077004F0D15 /* GowunBatang-Bold.ttf */; };
+		43D862FC276243B4004F0D15 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D862FB276243B3004F0D15 /* Cafe24Ssurround.ttf */; };
+		43D8630627624CA4004F0D15 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 43D8630527624CA4004F0D15 /* SplashImage.png */; };
 		48BCF0FB28D7D3256890E340 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +50,14 @@
 		43A1E4B22750C5FB001815DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A1E4B42750C5FB001815DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43D862E3275F54B9004F0D15 /* SpecificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewController.swift; sourceTree = "<group>"; };
-		43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewModel.swift; sourceTree = "<group>"; };
+		43D862E9276212A4004F0D15 /* SpecificView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificView.swift; sourceTree = "<group>"; };
+		43D862ED27621FBE004F0D15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		43D862F227622AE8004F0D15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43D862F427622B1D004F0D15 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43D862F727622EF2004F0D15 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
+		43D862F927623077004F0D15 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
+		43D862FB276243B3004F0D15 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		43D8630527624CA4004F0D15 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
 		9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Urea_Solution_Inventory_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,6 +76,8 @@
 		430E3617275B4C0D00DF3977 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43D862F527622EB4004F0D15 /* Font */,
+				43D862F327622AE8004F0D15 /* InfoPlist.strings */,
 				4353254327578816004D9162 /* extension */,
 				4353254027577CF4004D9162 /* LottieJSON */,
 				43A1E4A62750C5F8001815DD /* AppDelegate.swift */,
@@ -78,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				430E3619275B504300DF3977 /* LocationViewModel.swift */,
-				43D862E6275F55C0004F0D15 /* SpecificViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -86,6 +100,7 @@
 		4353252F2750C72B004D9162 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				43D862E82762128F004F0D15 /* View */,
 				43D862E5275F54CA004F0D15 /* Cell */,
 				43A1E4AA2750C5F8001815DD /* MainViewController.swift */,
 				4353253A2750F5A7004D9162 /* LocationViewController.swift */,
@@ -115,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4353254427578831004D9162 /* UIViewEx.swift */,
+				43D862ED27621FBE004F0D15 /* Constants.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -141,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				43A1E4B42750C5FB001815DD /* Info.plist */,
+				43D8630527624CA4004F0D15 /* SplashImage.png */,
 				430E3617275B4C0D00DF3977 /* Resources */,
 				435325312750C73E004D9162 /* Model */,
 				430E3618275B500B00DF3977 /* ViewModel */,
@@ -155,6 +172,24 @@
 				4353254727578BAA004D9162 /* LocationTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		43D862E82762128F004F0D15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43D862E9276212A4004F0D15 /* SpecificView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43D862F527622EB4004F0D15 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				43D862F927623077004F0D15 /* GowunBatang-Bold.ttf */,
+				43D862FB276243B3004F0D15 /* Cafe24Ssurround.ttf */,
+				43D862F727622EF2004F0D15 /* GowunBatang-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		E54F3A09A260ED4B73939609 /* Pods */ = {
@@ -218,6 +253,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 43A1E49A2750C5F8001815DD;
 			productRefGroup = 43A1E4A42750C5F8001815DD /* Products */;
@@ -235,9 +271,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A1E4B32750C5FB001815DD /* LaunchScreen.storyboard in Resources */,
+				43D862FC276243B4004F0D15 /* Cafe24Ssurround.ttf in Resources */,
 				43A1E4B02750C5FB001815DD /* Assets.xcassets in Resources */,
 				4353254227577D2A004D9162 /* water_animation.json in Resources */,
+				43D862F827622EF2004F0D15 /* GowunBatang-Regular.ttf in Resources */,
+				43D862FA27623077004F0D15 /* GowunBatang-Bold.ttf in Resources */,
+				43D8630627624CA4004F0D15 /* SplashImage.png in Resources */,
 				43A1E4AE2750C5F8001815DD /* Main.storyboard in Resources */,
+				43D862F127622AE8004F0D15 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,16 +332,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */,
+				43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */,
 				4353254527578831004D9162 /* UIViewEx.swift in Sources */,
 				4353254827578BAA004D9162 /* LocationTableViewCell.swift in Sources */,
 				430E361A275B504300DF3977 /* LocationViewModel.swift in Sources */,
 				4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */,
-				43D862E7275F55C1004F0D15 /* SpecificViewModel.swift in Sources */,
 				435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */,
 				43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */,
 				43A1E4A72750C5F8001815DD /* AppDelegate.swift in Sources */,
 				435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */,
 				43A1E4A92750C5F8001815DD /* SceneDelegate.swift in Sources */,
+				43D862EE27621FBE004F0D15 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +365,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		43D862F327622AE8004F0D15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D862F227622AE8004F0D15 /* en */,
+				43D862F427622B1D004F0D15 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -330,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -391,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

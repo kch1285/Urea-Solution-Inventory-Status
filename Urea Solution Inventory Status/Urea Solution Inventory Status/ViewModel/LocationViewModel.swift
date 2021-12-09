@@ -6,23 +6,22 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
+//import RxSwift
+//import RxRelay
 
 class LocationViewModel {
     
-    var dataObservable = BehaviorSubject<[UreaSolutionData]>(value: [])
-    var cityName: String
-    
-    let ureaSolutionDataCount: Int = 0
-    
-    init(cityName: String) {
-        self.cityName = cityName
-        print("viewmodel init : \(cityName)")
-        _ = UreaSolutionManager.shared.fetchDataRx(cityName)
-            .map { data in
-                return data
-            }
-            .bind(to: dataObservable)
-    }
+//    var dataObservable = BehaviorSubject<[UreaSolutionData]>(value: [])
+//    var cityName: String
+//
+//    let ureaSolutionDataCount: Int = 0
+//
+//    init(cityName: String) {
+//        self.cityName = cityName
+//        _ = UreaSolutionManager.shared.fetchDataRx(cityName)
+//            .map { data in
+//                return data
+//            }
+//            .bind(to: dataObservable)
+//    }
 }

@@ -33,10 +33,20 @@ class MainViewController: UIViewController {
 //        return field
 //    }()
     
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.text
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont(name: "GowunBatang-Regular", size: 13)
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpMainView()
+        navigationBarSetting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +77,7 @@ class MainViewController: UIViewController {
             button.layer.borderColor = UIColor.black.cgColor
             button.layer.masksToBounds = true
             button.layer.cornerRadius = 8
+            button.titleLabel?.font = UIFont(name: "GowunBatang-Regular", size: 20)
             button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
             view.addSubview(button)
             
@@ -97,13 +108,55 @@ class MainViewController: UIViewController {
                     make.top.equalTo(animationView.snp.bottom).offset(20)
                     make.leading.equalToSuperview().offset(20 * (index - 9) + (Int(buttonSize) * (index - 10)))
                 }
+                
+                if index == 10 {
+                    view.addSubview(infoLabel)
+                    infoLabel.snp.makeConstraints { make in
+                        make.top.equalTo(button.snp.bottom).offset(20)
+                        make.trailing.equalToSuperview().offset(-20)
+                        make.leading.equalTo(button)
+                    }
+                }
             }
         }
     }
     
+    private func navigationBarSetting() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+            navBarAppearance.backgroundColor = .clear
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.clipsToBounds = true
+
+    }
+    
     @objc private func didTapButton(_ button: UIButton) {
+        guard let city = button.currentTitle else {
+            return
+        }
+        
         let vc = LocationViewController()
-        vc.title = button.currentTitle
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        UreaSolutionManager.shared.fetchData(city) { [weak self] result in
+            switch result {
+            case .success(let data):
+                vc.data = data
+                DispatchQueue.main.async {
+                    vc.tableView.reloadData()
+                    vc.title = button.currentTitle
+                    self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "GowunBatang-Bold", size: 20)!]
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

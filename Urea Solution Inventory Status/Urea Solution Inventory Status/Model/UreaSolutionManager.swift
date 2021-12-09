@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import RxSwift
+//import RxSwift
 
 struct UreaSolutionManager {
     static var shared = UreaSolutionManager()
@@ -14,20 +14,20 @@ struct UreaSolutionManager {
     
     private let baseURL = "https://api.odcloud.kr/api/uws/v1/inventory?serviceKey=hYcfU37i4SB4wniwRXtVJleV5833j6KiQM8cl3rBy4ihYSGRomdo%2BCcbLl2YPbyWbCoHyhGPQSUOQAnjr2IRYA%3D%3D&page=1&perPage=9999"
 
-    func fetchDataRx(_ city: String) -> Observable<[UreaSolutionData]> {
-        return Observable.create { emitter in
-            fetchData(city) { result in
-                switch result {
-                case .success(let data):
-                    emitter.onNext(data)
-                    emitter.onCompleted()
-                case .failure(let error):
-                    emitter.onError(error)
-                }
-            }
-            return Disposables.create()
-        }
-    }
+//    func fetchDataRx(_ city: String) -> Observable<[UreaSolutionData]> {
+//        return Observable.create { emitter in
+//            fetchData(city) { result in
+//                switch result {
+//                case .success(let data):
+//                    emitter.onNext(data)
+//                    emitter.onCompleted()
+//                case .failure(let error):
+//                    emitter.onError(error)
+//                }
+//            }
+//            return Disposables.create()
+//        }
+//    }
     
     func fetchData(_ city: String, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
         guard let encodedString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
