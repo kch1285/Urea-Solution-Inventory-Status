@@ -27,7 +27,10 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
         
         cityName = title!
+   //     verification()
+        title = "\(title!) (\(data.count))"
         setUpTableView()
+        
       //  bindViewModel()
     }
 
@@ -40,6 +43,10 @@ class LocationViewController: UIViewController {
 //            }
 //            .disposed(by: disposeBag)
 //    }
+    
+    private func verification() {
+        data.removeAll { !$0.addr!.hasPrefix(cityName) }
+    }
     
     private func setUpTableView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])

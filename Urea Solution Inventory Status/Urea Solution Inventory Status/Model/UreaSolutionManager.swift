@@ -29,11 +29,20 @@ struct UreaSolutionManager {
 //        }
 //    }
     
-    func fetchData(_ city: String, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
-        guard let encodedString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+    func fetchInventory(data cityOrStation: String, flag: Int, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
+        guard let encodedString = cityOrStation.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
-        let urlString = "\(baseURL)&cond%5Baddr%3A%3ALIKE%5D=\(encodedString)"
+        var urlString: String = ""
+        
+        if flag == 0 {
+            urlString = "\(baseURL)&cond%5Baddr%3A%3ALIKE%5D=\(encodedString)"
+        }
+        
+        else {
+            urlString = "\(baseURL)&cond%5Bname%3A%3ALIKE%5D=\(encodedString)"
+        }
+        
         guard let url = URL(string: urlString) else {
             return
         }
