@@ -8,7 +8,12 @@
 import UIKit
 import SnapKit
 
+protocol SpecificViewDelegate: AnyObject {
+    func phoneCall()
+}
+
 class SpecificView: UIView {
+    weak var delegate: SpecificViewDelegate?
     private let addrLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -65,12 +70,21 @@ class SpecificView: UIView {
         return label
     }()
     
-    private let telLabel: UILabel = {
+    let telLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont(name: "GowunBatang-Regular", size: 20)
         return label
+    }()
+    
+    private let callButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "phone"), for: .normal)
+        button.backgroundColor = UIColor(named: "backgroundColor")
+        button.tintColor = .black
+        button.setRoundedRectangle()
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -128,6 +142,15 @@ class SpecificView: UIView {
             make.leading.trailing.equalTo(addrLabel)
             make.top.equalTo(telLabel.snp.bottom).offset(10)
         }
+        
+        addSubview(callButton)
+        callButton.addTarget(self, action: #selector(didTapCallButton), for: .touchUpInside)
+        callButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.top.equalTo(regDtLabel.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+       //     make.leading.equalToSuperview().offset(10)
+        }
     }
     
     func configure(with model: UreaSolutionData) {
@@ -138,5 +161,9 @@ class SpecificView: UIView {
         priceLabel.text = "가격 : \(model.price ?? "제공하지 않음")"
         regDtLabel.text = "업데이트 일시 : \(model.regDt ?? "제공하지 않음")"
         telLabel.text = "전화번호 : \(model.tel ?? "제공하지 않음")"
+    }
+    
+    @objc private func didTapCallButton() {
+        delegate?.phoneCall()
     }
 }

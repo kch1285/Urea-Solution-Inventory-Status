@@ -39,6 +39,7 @@ class SpecificViewController: UIViewController {
     private func setUpSpecificView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)
+        specificView.delegate = self
         specificView.configure(with: specificData)
         
         specificView.snp.makeConstraints { make in
@@ -56,4 +57,36 @@ class SpecificViewController: UIViewController {
 //            .disposed(by: disposeBag)
 //    }
 
+}
+
+
+extension SpecificViewController: SpecificViewDelegate {
+    func phoneCall() {
+        guard let text = specificView.telLabel.text else {
+            return
+        }
+        
+        let number = text.filter { $0.isNumber }
+        
+        if number == "" {
+            showNetworkAlert()
+        }
+        else {
+            let numberURL = "tel://" + number
+            if let url = NSURL(string: numberURL),
+               UIApplication.shared.canOpenURL(url as URL) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            }
+            else {
+                showNetworkAlert()
+            }
+        }
+    }
+    
+    private func showNetworkAlert() {
+        let alert = UIAlertController(title: "전화번호 오류", message: "전화번호가 유효하지 않거나 제공하지 않습니다.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }

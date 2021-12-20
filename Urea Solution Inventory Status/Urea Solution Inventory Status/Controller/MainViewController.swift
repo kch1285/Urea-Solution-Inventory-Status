@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
         field.attributedPlaceholder = placeholder
         field.font = UIFont(name: "GowunBatang-Regular", size: 20)
         field.textColor = .systemGray2
-        field.backgroundColor = UIColor(named: "searchFieldBackgroundColor")
+        field.backgroundColor = UIColor(named: "backgroundColor")
         field.setRoundedRectangle()
         return field
     }()
@@ -85,6 +85,7 @@ class MainViewController: UIViewController {
         }
         
         view.addSubview(searchField)
+        searchField.delegate = self
         searchField.snp.makeConstraints { make in
             make.centerY.equalTo(animationView)
             make.leading.equalTo(animationView.snp.trailing).offset(10)
@@ -193,7 +194,26 @@ class MainViewController: UIViewController {
     }
     
     @objc private func didTapSearchButton() {
-        guard let station = searchField.text else {
+        searchField.endEditing(true)
+    }
+    
+    private func showNetworkAlert() {
+        let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 연결 상태를 확인해주세요.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension MainViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchField.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let station = searchField.text, station != "" else {
             return
         }
         
@@ -204,6 +224,7 @@ class MainViewController: UIViewController {
             case .success(let data):
                 vc.data = data
                 DispatchQueue.main.async {
+                    self?.searchField.text = ""
                     vc.tableView.reloadData()
                     vc.title = """
                     "\(station)" 검색 결과
@@ -217,12 +238,5 @@ class MainViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    private func showNetworkAlert() {
-        let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 연결 상태를 확인해주세요.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }
