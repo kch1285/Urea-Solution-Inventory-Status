@@ -68,12 +68,10 @@ class LocationTableViewCell: UITableViewCell {
     }
 
     func configure(with model: UreaSolutionData) {
-        guard let color = model.color,
-              let name = model.name, let inventory = model.inventory
-        else {
+        guard let color = model.color, let inventory = model.inventory else {
             return
         }
-        Locationlabel.text = "\(name) (\(inventory))"
+        Locationlabel.text = "\(model.name) (\(inventory))"
         inventoryColorImageView.backgroundColor = UIColor(named: color)
     }
 }

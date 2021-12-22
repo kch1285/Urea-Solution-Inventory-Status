@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import KakaoSDKNavi
 
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
@@ -61,6 +62,22 @@ class SpecificViewController: UIViewController {
 
 
 extension SpecificViewController: SpecificViewDelegate {
+    func kakaoNavi() {
+        let destination = NaviLocation(name: specificData.name, x: specificData.lng, y: specificData.lat)
+        let option = NaviOption(coordType: .WGS84)
+        
+        guard let navigateUrl = NaviApi.shared.navigateUrl(destination: destination, option: option) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(navigateUrl) {
+            UIApplication.shared.open(navigateUrl, options: [:], completionHandler: nil)
+        }
+        else {
+            UIApplication.shared.open(NaviApi.webNaviInstallUrl, options: [:], completionHandler: nil)
+        }
+    }
+    
     func phoneCall() {
         guard let text = specificView.telLabel.text else {
             return

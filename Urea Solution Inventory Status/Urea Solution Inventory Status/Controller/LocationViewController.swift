@@ -14,6 +14,7 @@ class LocationViewController: UIViewController {
     private var cityName = ""
 //    private lazy var viewModel = LocationViewModel(cityName: cityName)
     var data: [UreaSolutionData] = []
+    var flag = false
  //   private let disposeBag = DisposeBag()
 
     let tableView: UITableView = {
@@ -27,7 +28,7 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
         
         cityName = title!
-   //     verification()
+        verification()
         title = "\(title!) (\(data.count))"
         setUpTableView()
         
@@ -45,7 +46,9 @@ class LocationViewController: UIViewController {
 //    }
     
     private func verification() {
-        data.removeAll { !$0.addr!.hasPrefix(cityName) }
+        if flag {
+            data.removeAll { !$0.addr.hasPrefix(cityName) }
+        }
     }
     
     private func setUpTableView() {

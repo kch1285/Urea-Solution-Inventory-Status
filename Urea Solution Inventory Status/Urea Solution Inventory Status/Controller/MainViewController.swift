@@ -182,6 +182,7 @@ class MainViewController: UIViewController {
                 DispatchQueue.main.async {
                     vc.tableView.reloadData()
                     vc.title = city
+                    vc.flag = true
                     self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "GowunBatang-Bold", size: 20)!]
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }

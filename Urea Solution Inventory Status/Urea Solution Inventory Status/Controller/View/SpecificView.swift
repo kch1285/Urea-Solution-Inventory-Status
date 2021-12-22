@@ -10,10 +10,12 @@ import SnapKit
 
 protocol SpecificViewDelegate: AnyObject {
     func phoneCall()
+    func kakaoNavi()
 }
 
 class SpecificView: UIView {
     weak var delegate: SpecificViewDelegate?
+    let buttonSize = 50
     private let addrLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -87,6 +89,12 @@ class SpecificView: UIView {
         return button
     }()
     
+    private let naviButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "kakaonavi"), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         SetUpViews()
@@ -146,16 +154,23 @@ class SpecificView: UIView {
         addSubview(callButton)
         callButton.addTarget(self, action: #selector(didTapCallButton), for: .touchUpInside)
         callButton.snp.makeConstraints { make in
-            make.size.equalTo(50)
+            make.size.equalTo(buttonSize)
             make.top.equalTo(regDtLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-       //     make.leading.equalToSuperview().offset(10)
+            make.centerX.equalToSuperview().offset(-buttonSize)
+        }
+        
+        addSubview(naviButton)
+        naviButton.addTarget(self, action: #selector(didTapNaviButton), for: .touchUpInside)
+        naviButton.snp.makeConstraints { make in
+            make.size.equalTo(buttonSize)
+            make.top.equalTo(callButton)
+            make.centerX.equalToSuperview().offset(buttonSize)
         }
     }
     
     func configure(with model: UreaSolutionData) {
         nameLabel.text = model.name
-        addrLabel.text = "위치 : \(model.addr ?? "제공하지 않음")"
+        addrLabel.text = "위치 : \(model.addr)"
         inventoryLabel.text = "수량 : \(model.inventory ?? "제공하지 않음")"
         openTimeLabel.text = "영업 시간 : \(model.openTime ?? "제공하지 않음")"
         priceLabel.text = "가격 : \(model.price ?? "제공하지 않음")"
@@ -165,5 +180,9 @@ class SpecificView: UIView {
     
     @objc private func didTapCallButton() {
         delegate?.phoneCall()
+    }
+    
+    @objc private func didTapNaviButton() {
+        delegate?.kakaoNavi()
     }
 }
