@@ -34,6 +34,7 @@
 /* Begin PBXFileReference section */
 		3097AE21C3441FC1F39A9838 /* Pods-Urea Solution Inventory Status.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.release.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.release.xcconfig"; sourceTree = "<group>"; };
 		3F24408B9B73787EC6FBE12C /* Pods-Urea Solution Inventory Status.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.debug.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.debug.xcconfig"; sourceTree = "<group>"; };
+		430C1EF32772DCEA00AB5BBD /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9/배포/TMapSDK.framework"; sourceTree = "<group>"; };
 		430E3619275B504300DF3977 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		435325342750C8AB004D9162 /* UreaSolutionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionManager.swift; sourceTree = "<group>"; };
 		435325362750CFBE004D9162 /* UreaSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionResponse.swift; sourceTree = "<group>"; };
@@ -49,6 +50,8 @@
 		43A1E4AF2750C5FB001815DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A1E4B22750C5FB001815DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A1E4B42750C5FB001815DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B2F0FF2772DD4B00E9289E /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9/개발/TMapSDK.framework"; sourceTree = "<group>"; };
+		43B2F10C2772DFD000E9289E /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9 2/개발/TMapSDK.framework"; sourceTree = "<group>"; };
 		43D862E3275F54B9004F0D15 /* SpecificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewController.swift; sourceTree = "<group>"; };
 		43D862E9276212A4004F0D15 /* SpecificView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificView.swift; sourceTree = "<group>"; };
 		43D862ED27621FBE004F0D15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -204,6 +207,9 @@
 		FE936759CFEDE62069C38EBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				430C1EF32772DCEA00AB5BBD /* TMapSDK.framework */,
+				43B2F0FF2772DD4B00E9289E /* TMapSDK.framework */,
+				43B2F10C2772DFD000E9289E /* TMapSDK.framework */,
 				9138BB693CF6E577AC988D75 /* Pods_Urea_Solution_Inventory_Status.framework */,
 			);
 			name = Frameworks;
@@ -524,6 +530,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -556,6 +563,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};

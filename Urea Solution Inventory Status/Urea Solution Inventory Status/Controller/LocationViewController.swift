@@ -19,6 +19,8 @@ class LocationViewController: UIViewController {
 
     let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
         tableView.backgroundColor = .clear
         tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.idenrifier)
         return tableView
@@ -69,6 +71,10 @@ extension LocationViewController: UITableViewDelegate {
         let vc = SpecificViewController()
         vc.specificData = data[indexPath.row]
         present(vc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

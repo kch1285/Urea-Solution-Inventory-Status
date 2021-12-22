@@ -17,7 +17,7 @@ class LocationTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont(name: "GowunBatang-Regular", size: 15)
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -53,17 +53,18 @@ class LocationTableViewCell: UITableViewCell {
         let colorImageSize: CGFloat = frame.size.height / 2
         let sideInterval = colorImageSize / 2
         
-        addSubview(Locationlabel)
-        Locationlabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(sideInterval)
-            make.centerY.equalToSuperview()
-        }
-        
         addSubview(inventoryColorImageView)
         inventoryColorImageView.snp.makeConstraints { make in
             make.height.width.equalTo(colorImageSize)
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-sideInterval)
+        }
+        
+        addSubview(Locationlabel)
+        Locationlabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(sideInterval)
+            make.trailing.equalTo(inventoryColorImageView.snp.leading).offset(-sideInterval)
+            make.centerY.equalToSuperview()
         }
     }
 
