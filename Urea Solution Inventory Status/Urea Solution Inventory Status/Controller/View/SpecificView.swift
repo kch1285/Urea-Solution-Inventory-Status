@@ -7,93 +7,82 @@
 
 import UIKit
 import SnapKit
+import Then
 
 protocol SpecificViewDelegate: AnyObject {
     func phoneCall()
     func kakaoNavi()
+    func favorites()
 }
 
 class SpecificView: UIView {
     weak var delegate: SpecificViewDelegate?
     let buttonSize = 50
-    private let addrLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let addrLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let inventoryLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let inventoryLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "GowunBatang-Bold", size: 30)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
+    private let nameLabel = UILabel().then {
+        $0.font = UIFont(name: "GowunBatang-Bold", size: 30)
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+    }
     
-    private let openTimeLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let openTimeLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let infoLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let priceLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let priceLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let regDtLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    private let regDtLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    let telLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        return label
-    }()
+    let telLabel = UILabel().then {
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+    }
     
-    private let callButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "phone"), for: .normal)
-        button.backgroundColor = UIColor(named: "backgroundColor")
-        button.tintColor = .black
-        button.setRoundedRectangle()
-        return button
-    }()
+    private let callButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(systemName: "phone"), for: .normal)
+        $0.backgroundColor = UIColor(named: "backgroundColor")
+        $0.tintColor = .black
+        $0.setRoundedRectangle()
+    }
     
-    private let naviButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "kakaonavi"), for: .normal)
-        return button
-    }()
+    private let naviButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "kakaonavi"), for: .normal)
+        $0.setRoundedRectangle()
+    }
+    
+    let starButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
+        $0.backgroundColor = UIColor(named: "backgroundColor")
+        $0.setRoundedRectangle()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -151,20 +140,28 @@ class SpecificView: UIView {
             make.top.equalTo(telLabel.snp.bottom).offset(10)
         }
         
-        addSubview(callButton)
-        callButton.addTarget(self, action: #selector(didTapCallButton), for: .touchUpInside)
-        callButton.snp.makeConstraints { make in
-            make.size.equalTo(buttonSize)
-            make.top.equalTo(regDtLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview().offset(-buttonSize)
-        }
-        
         addSubview(naviButton)
         naviButton.addTarget(self, action: #selector(didTapNaviButton), for: .touchUpInside)
         naviButton.snp.makeConstraints { make in
             make.size.equalTo(buttonSize)
-            make.top.equalTo(callButton)
-            make.centerX.equalToSuperview().offset(buttonSize)
+            make.top.equalTo(regDtLabel.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        addSubview(callButton)
+        callButton.addTarget(self, action: #selector(didTapCallButton), for: .touchUpInside)
+        callButton.snp.makeConstraints { make in
+            make.size.equalTo(buttonSize)
+            make.top.equalTo(naviButton)
+            make.centerX.equalToSuperview().offset(-buttonSize * 2)
+        }
+        
+        addSubview(starButton)
+        starButton.addTarget(self, action: #selector(didTapStarButton), for: .touchUpInside)
+        starButton.snp.makeConstraints { make in
+            make.size.equalTo(buttonSize)
+            make.top.equalTo(naviButton)
+            make.centerX.equalToSuperview().offset(buttonSize * 2)
         }
     }
     
@@ -184,5 +181,9 @@ class SpecificView: UIView {
     
     @objc private func didTapNaviButton() {
         delegate?.kakaoNavi()
+    }
+    
+    @objc private func didTapStarButton() {
+        delegate?.favorites()
     }
 }

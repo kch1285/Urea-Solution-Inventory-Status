@@ -62,6 +62,10 @@ class SpecificViewController: UIViewController {
 
 
 extension SpecificViewController: SpecificViewDelegate {
+    func favorites() {
+        specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
+    }
+    
     func kakaoNavi() {
         let destination = NaviLocation(name: specificData.name, x: specificData.lng, y: specificData.lat)
         let option = NaviOption(coordType: .WGS84)

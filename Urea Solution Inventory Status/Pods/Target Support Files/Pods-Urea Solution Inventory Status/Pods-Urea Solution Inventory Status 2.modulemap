@@ -1,0 +1,6 @@
+framework module Pods_Urea_Solution_Inventory_Status {
+  umbrella header "Pods-Urea Solution Inventory Status-umbrella.h"
+
+  export *
+  module * { export * }
+}

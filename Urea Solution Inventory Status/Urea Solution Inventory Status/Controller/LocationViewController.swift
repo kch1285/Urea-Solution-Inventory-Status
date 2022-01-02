@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Then
 //import RxSwift
 //import RxCocoa
 
@@ -17,14 +18,12 @@ class LocationViewController: UIViewController {
     var flag = false
  //   private let disposeBag = DisposeBag()
 
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 500
-        tableView.backgroundColor = .clear
-        tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.idenrifier)
-        return tableView
-    }()
+    let tableView = UITableView().then {
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 500
+        $0.backgroundColor = .clear
+        $0.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.idenrifier)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

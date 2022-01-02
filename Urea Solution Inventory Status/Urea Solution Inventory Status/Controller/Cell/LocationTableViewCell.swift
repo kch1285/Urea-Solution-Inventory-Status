@@ -7,26 +7,23 @@
 
 import UIKit
 import SnapKit
+import Then
 
 class LocationTableViewCell: UITableViewCell {
 
     static let idenrifier = "LocationTableViewCell"
     private var model: UreaSolutionResponse?
     
-    private let Locationlabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont(name: "GowunBatang-Regular", size: 15)
-        label.numberOfLines = 0
-        return label
-    }()
+    private let Locationlabel = UILabel().then {
+        $0.textColor = .black
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 15)
+        $0.numberOfLines = 0
+    }
     
-    private let inventoryColorImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 10
-        return imageView
-    }()
+    private let inventoryColorImageView = UIImageView().then {
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 10
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

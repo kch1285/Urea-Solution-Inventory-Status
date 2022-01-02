@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import SnapKit
+import Then
 
 class MainViewController: UIViewController {
 
@@ -28,33 +29,27 @@ class MainViewController: UIViewController {
         return view
     }()
 
-    private let searchButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.tintColor = .black
-        return button
-    }()
+    private let searchButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        $0.tintColor = .black
+    }
     
-    private let searchField: UITextField = {
-        let field = UITextField()
+    private let searchField = UITextField().then {
         let placeholder = NSMutableAttributedString(string: "주유소 이름")
         placeholder.addAttribute(.foregroundColor, value: UIColor.systemGray2, range: NSRange(0...5))
-        field.attributedPlaceholder = placeholder
-        field.font = UIFont(name: "GowunBatang-Regular", size: 20)
-        field.textColor = .systemGray2
-        field.backgroundColor = UIColor(named: "backgroundColor")
-        field.setRoundedRectangle()
-        return field
-    }()
+        $0.attributedPlaceholder = placeholder
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+        $0.textColor = .systemGray2
+        $0.backgroundColor = UIColor(named: "backgroundColor")
+        $0.setRoundedRectangle()
+    }
     
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.text
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = UIFont(name: "GowunBatang-Regular", size: 13)
-        return label
-    }()
+    private let infoLabel = UILabel().then {
+        $0.text = Constants.text
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 13)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,15 +97,17 @@ class MainViewController: UIViewController {
         }
         
         for (index, location) in locations.enumerated() {
-            let button = UIButton()
-            button.setTitle("\(location)", for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.layer.borderWidth = 1
-            button.layer.borderColor = UIColor.black.cgColor
-            button.layer.masksToBounds = true
-            button.layer.cornerRadius = 8
-            button.titleLabel?.font = UIFont(name: "GowunBatang-Regular", size: 20)
-            button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+            let button = UIButton().then {
+                $0.setTitle("\(location)", for: .normal)
+                $0.setTitleColor(.black, for: .normal)
+                $0.layer.borderWidth = 1
+                $0.layer.borderColor = UIColor.black.cgColor
+                $0.layer.masksToBounds = true
+                $0.layer.cornerRadius = 8
+                $0.titleLabel?.font = UIFont(name: "GowunBatang-Regular", size: 20)
+                $0.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+            }
+            
             view.addSubview(button)
             
             if index < 5 {

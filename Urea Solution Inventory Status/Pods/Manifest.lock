@@ -4,11 +4,13 @@ PODS:
     - KakaoSDKCommon/Common (= 2.8.4)
   - lottie-ios (3.3.0)
   - SnapKit (5.0.1)
+  - Then (2.7.0)
 
 DEPENDENCIES:
   - KakaoSDKNavi
   - lottie-ios
   - SnapKit
+  - Then
 
 SPEC REPOS:
   trunk:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - KakaoSDKNavi
     - lottie-ios
     - SnapKit
+    - Then
 
 SPEC CHECKSUMS:
   KakaoSDKCommon: 33c9902ee9ce13e9d1cac3549896406229836ff5
   KakaoSDKNavi: 46060633e4a41682bb8ed086372526412fcffda2
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: d74fae29135c0d6b3f567bddd0169785cc97e481
+PODFILE CHECKSUM: 86042e5f596c74a0ad3fb5b2b9beec2f7b0e2429
 
 COCOAPODS: 1.11.2
