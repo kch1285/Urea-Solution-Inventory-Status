@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AF89AF2CAA392870FE3288D /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400416FB532CDCD2BE110DEE /* Pods_Urea_Solution_Inventory_Status.framework */; };
 		430E361A275B504300DF3977 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430E3619275B504300DF3977 /* LocationViewModel.swift */; };
-		4338CE7A278167D400FBA2BC /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BA278182A000683838 /* FavoritesViewController.swift */; };
+		431AB3BD2781855300683838 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BC2781855300683838 /* Favorite.swift */; };
+		4338CE7A278167D400FBA2BC /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325342750C8AB004D9162 /* UreaSolutionManager.swift */; };
 		435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325362750CFBE004D9162 /* UreaSolutionResponse.swift */; };
 		4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353253A2750F5A7004D9162 /* LocationViewController.swift */; };
@@ -29,7 +32,6 @@
 		43D862FA27623077004F0D15 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D862F927623077004F0D15 /* GowunBatang-Bold.ttf */; };
 		43D862FC276243B4004F0D15 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D862FB276243B3004F0D15 /* Cafe24Ssurround.ttf */; };
 		43D8630627624CA4004F0D15 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 43D8630527624CA4004F0D15 /* SplashImage.png */; };
-		81FE4C284AF361BF25B5D294 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E76D04450C26466E7DAD1CB /* Pods_Urea_Solution_Inventory_Status.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4338CE7A278167D400FBA2BC /* BuildFile in Embed Frameworks */,
+				4338CE7A278167D400FBA2BC /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,8 +49,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0486406527974D1F3F430406 /* Pods-Urea Solution Inventory Status.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.debug.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.debug.xcconfig"; sourceTree = "<group>"; };
+		400416FB532CDCD2BE110DEE /* Pods_Urea_Solution_Inventory_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Urea_Solution_Inventory_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		430C1EF32772DCEA00AB5BBD /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9/배포/TMapSDK.framework"; sourceTree = "<group>"; };
 		430E3619275B504300DF3977 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		431AB3BA278182A000683838 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		431AB3BC2781855300683838 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		4338CE6C2781679700FBA2BC /* KakaoSDKNavi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KakaoSDKNavi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338CE702781679A00FBA2BC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338CE732781679F00FBA2BC /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,9 +84,7 @@
 		43D862F927623077004F0D15 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
 		43D862FB276243B3004F0D15 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		43D8630527624CA4004F0D15 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
-		45DD7259670EEE259772F083 /* Pods-Urea Solution Inventory Status.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.debug.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.debug.xcconfig"; sourceTree = "<group>"; };
-		7E76D04450C26466E7DAD1CB /* Pods_Urea_Solution_Inventory_Status.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Urea_Solution_Inventory_Status.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A93A1A0BE44C88CE3A268DC4 /* Pods-Urea Solution Inventory Status.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.release.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.release.xcconfig"; sourceTree = "<group>"; };
+		93E110ED9B74E36BAA425FE5 /* Pods-Urea Solution Inventory Status.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Urea Solution Inventory Status.release.xcconfig"; path = "Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81FE4C284AF361BF25B5D294 /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */,
+				0AF89AF2CAA392870FE3288D /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +132,7 @@
 				43A1E4AA2750C5F8001815DD /* MainViewController.swift */,
 				4353253A2750F5A7004D9162 /* LocationViewController.swift */,
 				43D862E3275F54B9004F0D15 /* SpecificViewController.swift */,
+				431AB3BA278182A000683838 /* FavoritesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			children = (
 				435325342750C8AB004D9162 /* UreaSolutionManager.swift */,
 				435325362750CFBE004D9162 /* UreaSolutionResponse.swift */,
+				431AB3BC2781855300683838 /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,8 +223,8 @@
 		E54F3A09A260ED4B73939609 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				45DD7259670EEE259772F083 /* Pods-Urea Solution Inventory Status.debug.xcconfig */,
-				A93A1A0BE44C88CE3A268DC4 /* Pods-Urea Solution Inventory Status.release.xcconfig */,
+				0486406527974D1F3F430406 /* Pods-Urea Solution Inventory Status.debug.xcconfig */,
+				93E110ED9B74E36BAA425FE5 /* Pods-Urea Solution Inventory Status.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -233,7 +239,7 @@
 				430C1EF32772DCEA00AB5BBD /* TMapSDK.framework */,
 				43B2F0FF2772DD4B00E9289E /* TMapSDK.framework */,
 				43B2F10C2772DFD000E9289E /* TMapSDK.framework */,
-				7E76D04450C26466E7DAD1CB /* Pods_Urea_Solution_Inventory_Status.framework */,
+				400416FB532CDCD2BE110DEE /* Pods_Urea_Solution_Inventory_Status.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,12 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43A1E4B72750C5FB001815DD /* Build configuration list for PBXNativeTarget "Urea Solution Inventory Status" */;
 			buildPhases = (
-				078369910C25DE0525A2AE78 /* [CP] Check Pods Manifest.lock */,
+				E6E1AC9AD1B982FBA8D42FFA /* [CP] Check Pods Manifest.lock */,
 				43A1E49F2750C5F8001815DD /* Sources */,
 				43A1E4A02750C5F8001815DD /* Frameworks */,
 				43A1E4A12750C5F8001815DD /* Resources */,
 				4338CE7B278167D400FBA2BC /* Embed Frameworks */,
-				AF0BE898CC82093D031D955C /* [CP] Embed Pods Frameworks */,
+				8BE3324654A20987BA9139BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -315,7 +321,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		078369910C25DE0525A2AE78 /* [CP] Check Pods Manifest.lock */ = {
+		8BE3324654A20987BA9139BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6E1AC9AD1B982FBA8D42FFA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -337,23 +360,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF0BE898CC82093D031D955C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Urea Solution Inventory Status/Pods-Urea Solution Inventory Status-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -361,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */,
 				43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */,
 				43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */,
 				4353254527578831004D9162 /* UIViewEx.swift in Sources */,
@@ -371,6 +378,7 @@
 				43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */,
 				43A1E4A72750C5F8001815DD /* AppDelegate.swift in Sources */,
 				435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */,
+				431AB3BD2781855300683838 /* Favorite.swift in Sources */,
 				43A1E4A92750C5F8001815DD /* SceneDelegate.swift in Sources */,
 				43D862EE27621FBE004F0D15 /* Constants.swift in Sources */,
 			);
@@ -527,7 +535,7 @@
 		};
 		43A1E4B82750C5FB001815DD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45DD7259670EEE259772F083 /* Pods-Urea Solution Inventory Status.debug.xcconfig */;
+			baseConfigurationReference = 0486406527974D1F3F430406 /* Pods-Urea Solution Inventory Status.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -560,7 +568,7 @@
 		};
 		43A1E4B92750C5FB001815DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A93A1A0BE44C88CE3A268DC4 /* Pods-Urea Solution Inventory Status.release.xcconfig */;
+			baseConfigurationReference = 93E110ED9B74E36BAA425FE5 /* Pods-Urea Solution Inventory Status.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

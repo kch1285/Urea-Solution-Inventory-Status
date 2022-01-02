@@ -72,4 +72,12 @@ class LocationTableViewCell: UITableViewCell {
         Locationlabel.text = "\(model.name) (\(inventory))"
         inventoryColorImageView.backgroundColor = UIColor(named: color)
     }
+    
+    func configure(with favorite: Favorite) {
+        guard let color = favorite.color, let inventory = favorite.inventory else {
+            return
+        }
+        Locationlabel.text = "\(favorite.name) (\(inventory))"
+        inventoryColorImageView.backgroundColor = UIColor(named: color)
+    }
 }

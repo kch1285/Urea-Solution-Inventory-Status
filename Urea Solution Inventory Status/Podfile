@@ -11,4 +11,5 @@ pod 'SnapKit'
 pod 'lottie-ios'
 pod 'KakaoSDKNavi'
 pod 'Then'
+pod 'RealmSwift'
 end
