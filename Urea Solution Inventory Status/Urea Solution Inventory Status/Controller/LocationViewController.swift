@@ -8,17 +8,35 @@
 import UIKit
 import SnapKit
 import Then
-//import RxSwift
-//import RxCocoa
 
 class LocationViewController: UIViewController {
-    private var cityName = ""
-//    private lazy var viewModel = LocationViewModel(cityName: cityName)
-    var data: [UreaSolutionData] = []
-    var flag = false
- //   private let disposeBag = DisposeBag()
+    lazy var cityName = "" {
+        didSet {
+            DispatchQueue.main.async {
+                self.title = self.cityName + " (\(self.data.count))"
+            }
+        }
+    }
+    
+    lazy var searchResult = "" {
+        didSet {
+            DispatchQueue.main.async {
+                self.title = """
+                            "\(self.searchResult)" 검색 결과 (\(self.data.count))
+                            """
+            }
+        }
+    }
+    
+    var data: [UreaSolutionData] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
-    let tableView = UITableView().then {
+    private let tableView = UITableView().then {
         $0.rowHeight = UITableView.automaticDimension
         $0.estimatedRowHeight = 500
         $0.backgroundColor = .clear
@@ -28,28 +46,7 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityName = title!
-        verification()
-        title = "\(title!) (\(data.count))"
         setUpTableView()
-        
-      //  bindViewModel()
-    }
-
-//    private func bindViewModel() {
-//        viewModel.dataObservable
-//            .observe(on: MainScheduler.instance)
-//            .bind(to: tableView.rx.items(cellIdentifier: LocationTableViewCell.idenrifier, cellType: LocationTableViewCell.self)) { index, item, cell in
-//                cell.textLabel?.text = "\(item.name) (\(item.inventory))"
-//                cell.textLabel?.textColor = .black
-//            }
-//            .disposed(by: disposeBag)
-//    }
-    
-    private func verification() {
-        if flag {
-            data.removeAll { !$0.addr.hasPrefix(cityName) }
-        }
     }
     
     private func setUpTableView() {

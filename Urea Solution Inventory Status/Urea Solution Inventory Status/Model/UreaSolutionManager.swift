@@ -6,43 +6,45 @@
 //
 
 import Foundation
-//import RxSwift
 
-struct UreaSolutionManager {
+class UreaSolutionManager {
     static var shared = UreaSolutionManager()
     private init() {}
     
     private let baseURL = "https://api.odcloud.kr/api/uws/v1/inventory?serviceKey=hYcfU37i4SB4wniwRXtVJleV5833j6KiQM8cl3rBy4ihYSGRomdo%2BCcbLl2YPbyWbCoHyhGPQSUOQAnjr2IRYA%3D%3D&page=1&perPage=9999"
-
-//    func fetchDataRx(_ city: String) -> Observable<[UreaSolutionData]> {
-//        return Observable.create { emitter in
-//            fetchData(city) { result in
-//                switch result {
-//                case .success(let data):
-//                    emitter.onNext(data)
-//                    emitter.onCompleted()
-//                case .failure(let error):
-//                    emitter.onError(error)
-//                }
-//            }
-//            return Disposables.create()
-//        }
-//    }
     
-    func fetchInventory(data cityOrStation: String, flag: Int, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
-        guard let encodedString = cityOrStation.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+    func fetchInventory(about city: String, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
+        guard let encodedString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
-        var urlString: String = ""
+        let urlString = "\(baseURL)&cond%5Baddr%3A%3ALIKE%5D=\(encodedString)"
         
-        if flag == 0 {
-            urlString = "\(baseURL)&cond%5Baddr%3A%3ALIKE%5D=\(encodedString)"
+        fetch(urlString) { result in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
-        
-        else {
-            urlString = "\(baseURL)&cond%5Bname%3A%3ALIKE%5D=\(encodedString)"
+    }
+    
+    func search(_ station: String, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
+        guard let encodedString = station.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
         }
-        
+        let urlString = "\(baseURL)&cond%5Bname%3A%3ALIKE%5D=\(encodedString)"
+        fetch(urlString) { result in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func fetch(_ urlString: String, completion: @escaping (Result<[UreaSolutionData], Error>) -> Void) {
         guard let url = URL(string: urlString) else {
             return
         }

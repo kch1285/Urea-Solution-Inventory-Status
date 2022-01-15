@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import SnapKit
 import Then
 
@@ -19,20 +18,9 @@ class MainViewController: UIViewController {
         "광주", "제주"
     ]
     
-    private var numbers: [Int] = []
-    
     private let favoritesButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
-        $0.addTarget(self, action: #selector(didTapfavoritesButton), for: .touchUpInside)
     }
-    
-    private let animationView: AnimationView = {
-        let view = AnimationView(name: "water_animation")
-        view.contentMode = .scaleAspectFit
-        view.backgroundBehavior = .stop
-        view.loopMode = .loop
-        return view
-    }()
 
     private let searchButton = UIButton().then {
         $0.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
@@ -65,7 +53,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      //  animationView.play()
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,27 +65,21 @@ class MainViewController: UIViewController {
         let buttonSize = (view.frame.size.width - 60) / 5
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         
-        view.addSubview(animationView)
-        animationView.snp.makeConstraints { make in
-            make.width.height.equalTo((view.frame.size.width - 60) / 4)
-            make.top.equalToSuperview().offset(view.frame.size.height / 10)
-            make.leading.equalToSuperview().offset(view.frame.size.width / 15)
-        }
-        
         view.addSubview(searchField)
         searchField.delegate = self
         searchField.snp.makeConstraints { make in
-            make.top.equalTo(animationView)
-            make.leading.equalTo(animationView.snp.trailing).offset(10)
-            make.trailing.equalToSuperview().offset(-view.frame.size.width / 15)
-            make.height.equalTo(animationView.snp.height).dividedBy(2)
+            make.top.equalToSuperview().offset(view.frame.size.height / 10)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-((view.frame.size.width - 60) / 8 + 20))
+            make.height.equalTo((view.frame.size.width - 60) / 8)
         }
         
         view.addSubview(favoritesButton)
+        favoritesButton.addTarget(self, action: #selector(didTapfavoritesButton), for: .touchUpInside)
         favoritesButton.snp.makeConstraints { make in
-            make.size.equalTo(30)
-            make.top.equalTo(searchField.snp.bottom).offset(10)
-            make.trailing.equalTo(searchField)
+            make.size.equalTo(searchField.snp.height)
+            make.top.equalTo(searchField)
+            make.leading.equalTo(searchField.snp.trailing).offset(10)
         }
         
         view.addSubview(searchButton)
@@ -125,28 +107,28 @@ class MainViewController: UIViewController {
             if index < 5 {
                 button.snp.makeConstraints { make in
                     make.width.height.equalTo(buttonSize)
-                    make.top.equalTo(animationView.snp.bottom).offset(10)
+                    make.top.equalTo(searchField.snp.bottom).offset(10)
                     make.leading.equalToSuperview().offset(10 * (index + 1) + (Int(buttonSize) * index))
                 }
             }
             else if index < 10 {
                 button.snp.makeConstraints { make in
                     make.width.height.equalTo(buttonSize)
-                    make.top.equalTo(animationView.snp.bottom).offset(buttonSize + 20)
+                    make.top.equalTo(searchField.snp.bottom).offset(buttonSize + 20)
                     make.leading.equalToSuperview().offset(10 * (index - 4) + (Int(buttonSize) * (index - 5)))
                 }
             }
             else if index < 15 {
                 button.snp.makeConstraints { make in
                     make.width.height.equalTo(buttonSize)
-                    make.top.equalTo(animationView.snp.bottom).offset(buttonSize * 2 + 30)
+                    make.top.equalTo(searchField.snp.bottom).offset(buttonSize * 2 + 30)
                     make.leading.equalToSuperview().offset(10 * (index - 9) + (Int(buttonSize) * (index - 10)))
                 }
             }
             else {
                 button.snp.makeConstraints { make in
                     make.width.height.equalTo(buttonSize)
-                    make.top.equalTo(animationView.snp.bottom).offset(buttonSize * 3 + 40)
+                    make.top.equalTo(searchField.snp.bottom).offset(buttonSize * 3 + 40)
                     make.leading.equalToSuperview().offset(10 * (index - 14) + (Int(buttonSize) * (index - 15)))
                 }
                 if index == 15 {
@@ -184,17 +166,20 @@ class MainViewController: UIViewController {
         
         let vc = LocationViewController()
         view.endEditing(true)
-        UreaSolutionManager.shared.fetchInventory(data: city, flag: 0) { [weak self] result in
+        UreaSolutionManager.shared.fetchInventory(about: city) { [weak self] result in
             switch result {
             case .success(let data):
-                vc.data = data
+                var processedData = data
+                processedData.removeAll { !$0.addr.hasPrefix(city) }
+                vc.data = processedData
+                vc.cityName = city
                 DispatchQueue.main.async {
-                    vc.tableView.reloadData()
-                    vc.title = city
-                    vc.flag = true
-                    self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "GowunBatang-Bold", size: 20)!]
+                    // URLSession 작업은 글로벌 큐에서 동작한다.
+                    // 컴플리션 핸들러 동작을 따로 어디서 처리할지 정하지 않으면 현재 쓰레드(글로벌)에서 동작하므로
+                    // 푸쉬 작업도 글로벌 큐에서 동작한다 -> 메인 쓰레드로 따로 처리해야한다.
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
+                
             case .failure(_):
                 DispatchQueue.main.async {
                     self?.showNetworkAlert()
@@ -204,7 +189,27 @@ class MainViewController: UIViewController {
     }
     
     @objc private func didTapSearchButton() {
-        searchField.endEditing(true)
+        guard let station = searchField.text, station != "" else {
+            return
+        }
+        
+        let vc = LocationViewController()
+        view.endEditing(true)
+        UreaSolutionManager.shared.search(station) { [weak self] result in
+            switch result {
+            case .success(let data):
+                vc.data = data
+                vc.searchResult = station
+                DispatchQueue.main.async {
+                    self?.searchField.text = ""
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.showNetworkAlert()
+                }
+            }
+        }
     }
     
     @objc private func didTapfavoritesButton() {
@@ -223,35 +228,7 @@ class MainViewController: UIViewController {
 //MARK: - UITextFieldDelegate
 extension MainViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchField.endEditing(true)
+        didTapSearchButton()
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let station = searchField.text, station != "" else {
-            return
-        }
-        
-        let vc = LocationViewController()
-        view.endEditing(true)
-        UreaSolutionManager.shared.fetchInventory(data: station, flag: 1) { [weak self] result in
-            switch result {
-            case .success(let data):
-                vc.data = data
-                DispatchQueue.main.async {
-                    self?.searchField.text = ""
-                    vc.tableView.reloadData()
-                    vc.title = """
-                    "\(station)" 검색 결과
-                    """
-                    self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "GowunBatang-Bold", size: 20)!]
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self?.showNetworkAlert()
-                }
-            }
-        }
     }
 }

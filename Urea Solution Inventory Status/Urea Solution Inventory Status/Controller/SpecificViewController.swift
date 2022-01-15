@@ -11,34 +11,13 @@ import KakaoSDKNavi
 
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
-    let specificView = SpecificView()
- //   private let newFavorite = Favorite()
-//    private let tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.backgroundColor = .clear
-//        tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.idenrifier)
-//        return tableView
-//    }()
+    private let specificView = SpecificView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
- //       setUpTableView()
-      //  bindViewModel()
         setUpSpecificView()
     }
-    
-    private func loadData() {
-    }
-    
-//    private func setUpTableView() {
-//        view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
-//        view.addSubview(tableView)
-//
-//        tableView.snp.makeConstraints { make in
-//            make.size.equalToSuperview()
-//        }
-//    }
     
     private func setUpSpecificView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
@@ -50,48 +29,14 @@ class SpecificViewController: UIViewController {
             make.size.equalToSuperview()
         }
     }
-    
-//    private func bindViewModel() {
-//        viewModel.dataObservable
-//            .observe(on: MainScheduler.instance)
-//            .bind(to: tableView.rx.items(cellIdentifier: LocationTableViewCell.idenrifier, cellType: LocationTableViewCell.self)) { index, item, cell in
-//                cell.textLabel?.text = item.addr
-//                cell.textLabel?.textColor = .black
-//            }
-//            .disposed(by: disposeBag)
-//    }
-
 }
 
-
+//MARK: - SpecificViewDelegate
 extension SpecificViewController: SpecificViewDelegate {
     func favorites() {
-//        do {
-//            try realm.write({
-//                if newFavorite.imageName == "yellowStar" {
-//                    newFavorite.imageName = "emptyStar"
-//                    specificView.starButton.setBackgroundImage(UIImage(named: newFavorite.imageName), for: .normal)
-//                    realm.delete(newFavorite)
-//                }
-//                else {
-//                    newFavorite.name = specificData.name
-//                    newFavorite.color = specificData.color
-//                    newFavorite.addr = specificData.addr
-//                    newFavorite.price = specificData.price
-//                    newFavorite.inventory = specificData.inventory
-//
-//                    newFavorite.imageName = "yellowStar"
-//                    newFavorite.isFavorite = true
-//
-//                    specificView.starButton.setBackgroundImage(UIImage(named: newFavorite.imageName), for: .normal)
-//                    realm.add(newFavorite)
-//
-//                }
-//            })
-//        }
-//        catch {
-//            print(error.localizedDescription)
-//        }
+        let favorite = Favorite(name: specificData.name, addr: specificData.addr)
+        FavoritesViewController.favorites.append(favorite)
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
     }
     
     func kakaoNavi() {
