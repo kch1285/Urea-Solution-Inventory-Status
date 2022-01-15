@@ -8,13 +8,11 @@
 import UIKit
 import SnapKit
 import KakaoSDKNavi
-import RealmSwift
 
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
     let specificView = SpecificView()
-    private let realm = try! Realm()
-    private let newFavorite = Favorite()
+    
 //    private let tableView: UITableView = {
 //        let tableView = UITableView()
 //        tableView.backgroundColor = .clear
@@ -28,9 +26,6 @@ class SpecificViewController: UIViewController {
  //       setUpTableView()
       //  bindViewModel()
         setUpSpecificView()
-    }
-    
-    private func loadData() {
     }
     
 //    private func setUpTableView() {
@@ -68,32 +63,7 @@ class SpecificViewController: UIViewController {
 
 extension SpecificViewController: SpecificViewDelegate {
     func favorites() {
-        do {
-            try realm.write({
-                if newFavorite.imageName == "yellowStar" {
-                    newFavorite.imageName = "emptyStar"
-                    specificView.starButton.setBackgroundImage(UIImage(named: newFavorite.imageName), for: .normal)
-                    realm.delete(newFavorite)
-                }
-                else {
-                    newFavorite.name = specificData.name
-                    newFavorite.color = specificData.color
-                    newFavorite.addr = specificData.addr
-                    newFavorite.price = specificData.price
-                    newFavorite.inventory = specificData.inventory
-                    
-                    newFavorite.imageName = "yellowStar"
-                    newFavorite.isFavorite = true
-                    
-                    specificView.starButton.setBackgroundImage(UIImage(named: newFavorite.imageName), for: .normal)
-                    realm.add(newFavorite)
-                    
-                }
-            })
-        }
-        catch {
-            print(error.localizedDescription)
-        }
+        specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
     }
     
     func kakaoNavi() {

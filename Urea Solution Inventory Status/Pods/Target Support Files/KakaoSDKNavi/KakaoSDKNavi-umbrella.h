@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "KakaoSDKNavi 2.h"
 #import "KakaoSDKNavi.h"
 
 FOUNDATION_EXPORT double KakaoSDKNaviVersionNumber;

@@ -18,7 +18,7 @@
 
 
 ## 개발스택
-`Swift`, `MVC`, `SnapKit`, `Lottie`, `Then`
+`Swift`, `MVC`, `SnapKit`, `Lottie`
 
 <br />
 

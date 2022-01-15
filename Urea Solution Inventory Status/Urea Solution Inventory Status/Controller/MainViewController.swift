@@ -21,11 +21,6 @@ class MainViewController: UIViewController {
     
     private var numbers: [Int] = []
     
-    private let favoritesButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
-        $0.addTarget(self, action: #selector(didTapfavoritesButton), for: .touchUpInside)
-    }
-    
     private let animationView: AnimationView = {
         let view = AnimationView(name: "water_animation")
         view.contentMode = .scaleAspectFit
@@ -65,7 +60,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      //  animationView.play()
+        animationView.play()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,17 +82,10 @@ class MainViewController: UIViewController {
         view.addSubview(searchField)
         searchField.delegate = self
         searchField.snp.makeConstraints { make in
-            make.top.equalTo(animationView)
+            make.centerY.equalTo(animationView)
             make.leading.equalTo(animationView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(-view.frame.size.width / 15)
             make.height.equalTo(animationView.snp.height).dividedBy(2)
-        }
-        
-        view.addSubview(favoritesButton)
-        favoritesButton.snp.makeConstraints { make in
-            make.size.equalTo(30)
-            make.top.equalTo(searchField.snp.bottom).offset(10)
-            make.trailing.equalTo(searchField)
         }
         
         view.addSubview(searchButton)
@@ -205,11 +193,6 @@ class MainViewController: UIViewController {
     
     @objc private func didTapSearchButton() {
         searchField.endEditing(true)
-    }
-    
-    @objc private func didTapfavoritesButton() {
-        let vc = FavoritesViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func showNetworkAlert() {

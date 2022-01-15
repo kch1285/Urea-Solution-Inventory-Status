@@ -80,6 +80,8 @@ class SpecificView: UIView {
     
     let starButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
+        $0.backgroundColor = UIColor(named: "backgroundColor")
+        $0.setRoundedRectangle()
     }
     
     override init(frame: CGRect) {
