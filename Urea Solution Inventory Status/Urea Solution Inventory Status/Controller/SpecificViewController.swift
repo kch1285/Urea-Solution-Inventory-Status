@@ -8,10 +8,21 @@
 import UIKit
 import SnapKit
 import KakaoSDKNavi
+import Then
 
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
     private let specificView = SpecificView()
+    private var favorite: Favorite!
+    
+    private let toastLabel = UILabel().then {
+        $0.backgroundColor = .black.withAlphaComponent(0.6)
+        $0.textColor = .white
+        $0.textAlignment = .center
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+        $0.layer.cornerRadius = 8
+        $0.clipsToBounds = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +34,54 @@ class SpecificViewController: UIViewController {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)
         specificView.delegate = self
-        specificView.configure(with: specificData)
+        favorite = Favorite(data: specificData, isAdded: checkFavorite())
+        specificView.configure(with: favorite)
         
         specificView.snp.makeConstraints { make in
             make.size.equalToSuperview()
         }
+    }
+    
+    private func showToast(_ message: String) {
+        toastLabel.text = message
+        toastLabel.alpha = 1
+        view.addSubview(toastLabel)
+        toastLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-100)
+        }
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseOut) {
+            self.toastLabel.alpha = 0
+        } completion: { _ in
+            self.toastLabel.removeFromSuperview()
+        }
+    }
+    
+    private func checkFavorite() -> Bool {
+        if FavoritesViewController.favorites.filter({ $0.data.addr == specificData.addr }).count == 1 {
+            return true
+        }
+        return false
     }
 }
 
 //MARK: - SpecificViewDelegate
 extension SpecificViewController: SpecificViewDelegate {
     func favorites() {
-        let favorite = Favorite(name: specificData.name, addr: specificData.addr)
-        FavoritesViewController.favorites.append(favorite)
+        // 즐겨찾기 추가
+        if !checkFavorite() {
+            favorite.isAdded = true
+            FavoritesViewController.favorites.append(favorite!)
+            showToast(" 즐겨찾기에 추가되었습니다. ")
+            specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
+        }
+        // 즐겨찾기 해제
+        else {
+            favorite.isAdded = false
+            specificView.starButton.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
+            FavoritesViewController.favorites.removeAll { $0.data.addr == favorite.data.addr }
+            showToast(" 즐겨찾기에서 삭제되었습니다. ")
+        }
         UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
     }
     

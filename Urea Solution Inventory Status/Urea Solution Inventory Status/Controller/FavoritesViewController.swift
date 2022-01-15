@@ -54,16 +54,16 @@ class FavoritesViewController: UIViewController {
         FavoritesViewController.favorites = try! PropertyListDecoder().decode([Favorite].self, from: data)
         
         if FavoritesViewController.favorites.isEmpty {
-            showEmptyLabel(false)
+            showEmptyLabel(true)
         }
         else {
-            showEmptyLabel(true)
+            showEmptyLabel(false)
             favoritesTableView.reloadData()
         }
     }
     
     private func showEmptyLabel(_ show: Bool) {
-        emptyLabel.isHidden = show
+        emptyLabel.isHidden = !show
     }
 }
 
@@ -72,8 +72,8 @@ extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let stationName = FavoritesViewController.favorites[indexPath.row].name
-        let stationAddr = FavoritesViewController.favorites[indexPath.row].addr
+        let stationName = FavoritesViewController.favorites[indexPath.row].data.name
+        let stationAddr = FavoritesViewController.favorites[indexPath.row].data.addr
         let vc = SpecificViewController()
         
         UreaSolutionManager.shared.search(stationName) { [weak self] result in
@@ -97,19 +97,19 @@ extension FavoritesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.idenrifier, for: indexPath)
-        cell.textLabel?.text = FavoritesViewController.favorites[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.idenrifier, for: indexPath) as! LocationTableViewCell
+        cell.configure(with: FavoritesViewController.favorites[indexPath.row].data)
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            FavoritesViewController.favorites.removeValue(forKey: "")
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            UserDefaults.standard.set(FavoritesViewController.favorites, forKey: "favorites")
-//            if FavoritesViewController.favorites.isEmpty {
-//                showEmptyLabel(true)
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            FavoritesViewController.favorites.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
+            if FavoritesViewController.favorites.isEmpty {
+                showEmptyLabel(true)
+            }
+        }
+    }
 }

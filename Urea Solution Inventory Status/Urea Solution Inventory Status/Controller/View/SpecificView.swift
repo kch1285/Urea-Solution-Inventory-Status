@@ -163,14 +163,15 @@ class SpecificView: UIView {
         }
     }
     
-    func configure(with model: UreaSolutionData) {
-        nameLabel.text = model.name
-        addrLabel.text = "위치 : \(model.addr)"
-        inventoryLabel.text = "수량 : \(model.inventory ?? "제공하지 않음")"
-        openTimeLabel.text = "영업 시간 : \(model.openTime ?? "제공하지 않음")"
-        priceLabel.text = "가격 : \(model.price ?? "제공하지 않음")"
-        regDtLabel.text = "업데이트 일시 : \(model.regDt ?? "제공하지 않음")"
-        telLabel.text = "전화번호 : \(model.tel ?? "제공하지 않음")"
+    func configure(with model: Favorite) {
+        nameLabel.text = model.data.name
+        addrLabel.text = "위치 : \(model.data.addr)"
+        inventoryLabel.text = "수량 : \(model.data.inventory ?? "제공하지 않음")"
+        openTimeLabel.text = "영업 시간 : \(model.data.openTime ?? "제공하지 않음")"
+        priceLabel.text = "가격 : \(model.data.price ?? "제공하지 않음")"
+        regDtLabel.text = "업데이트 일시 : \(model.data.regDt ?? "제공하지 않음")"
+        telLabel.text = "전화번호 : \(model.data.tel ?? "제공하지 않음")"
+        starButton.setBackgroundImage(UIImage(named: model.isAdded ? "yellowStar" : "emptyStar"), for: .normal)
     }
     
     @objc private func didTapCallButton() {

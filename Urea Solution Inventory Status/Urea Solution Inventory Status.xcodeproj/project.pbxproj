@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		430E361A275B504300DF3977 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430E3619275B504300DF3977 /* LocationViewModel.swift */; };
 		431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BA278182A000683838 /* FavoritesViewController.swift */; };
 		431AB3BD2781855300683838 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BC2781855300683838 /* Favorite.swift */; };
-		4338CE7A278167D400FBA2BC /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4338CE7A278167D400FBA2BC /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325342750C8AB004D9162 /* UreaSolutionManager.swift */; };
 		435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325362750CFBE004D9162 /* UreaSolutionResponse.swift */; };
 		4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353253A2750F5A7004D9162 /* LocationViewController.swift */; };
@@ -41,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4338CE7A278167D400FBA2BC /* BuildFile in Embed Frameworks */,
+				4338CE7A278167D400FBA2BC /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		430C1EF32772DCEA00AB5BBD /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9/배포/TMapSDK.framework"; sourceTree = "<group>"; };
-		430E3619275B504300DF3977 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		431AB3BA278182A000683838 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		431AB3BC2781855300683838 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		4338CE6C2781679700FBA2BC /* KakaoSDKNavi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KakaoSDKNavi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,14 +112,6 @@
 				43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		430E3618275B500B00DF3977 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				430E3619275B504300DF3977 /* LocationViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4353252F2750C72B004D9162 /* Controller */ = {
@@ -188,7 +178,6 @@
 				43A1E4B42750C5FB001815DD /* Info.plist */,
 				430E3617275B4C0D00DF3977 /* Resources */,
 				435325312750C73E004D9162 /* Model */,
-				430E3618275B500B00DF3977 /* ViewModel */,
 				4353252F2750C72B004D9162 /* Controller */,
 			);
 			path = "Urea Solution Inventory Status";
@@ -372,7 +361,6 @@
 				43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */,
 				4353254527578831004D9162 /* UIViewEx.swift in Sources */,
 				4353254827578BAA004D9162 /* LocationTableViewCell.swift in Sources */,
-				430E361A275B504300DF3977 /* LocationViewModel.swift in Sources */,
 				4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */,
 				435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */,
 				43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */,

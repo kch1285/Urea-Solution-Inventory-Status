@@ -8,6 +8,6 @@
 import Foundation
 
 struct Favorite: Codable {
-    let name: String
-    let addr: String
+    let data: UreaSolutionData
+    var isAdded: Bool
 }

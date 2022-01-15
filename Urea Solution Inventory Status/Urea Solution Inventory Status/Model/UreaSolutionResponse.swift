@@ -16,7 +16,7 @@ struct UreaSolutionResponse: Decodable {
     let matchCount: Int
 }
 
-struct UreaSolutionData: Decodable {
+struct UreaSolutionData: Codable {
     let addr: String
     let color: String?
     let inventory: String?
