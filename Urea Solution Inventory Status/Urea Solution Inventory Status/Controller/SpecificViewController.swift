@@ -14,6 +14,7 @@ class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
     private let specificView = SpecificView()
     private var favorite: Favorite!
+    private let viewModel = FavoriteViewModel()
     
     private let toastLabel = UILabel().then {
         $0.backgroundColor = .black.withAlphaComponent(0.6)
@@ -34,7 +35,7 @@ class SpecificViewController: UIViewController {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)
         specificView.delegate = self
-        favorite = Favorite(data: specificData, isAdded: FavoriteViewModel.checkFavorite(specificData.addr))
+        favorite = Favorite(data: specificData, isAdded: viewModel.checkFavorite(specificData.addr))
         specificView.configure(with: favorite)
         
         specificView.snp.makeConstraints { make in
@@ -63,9 +64,9 @@ class SpecificViewController: UIViewController {
 extension SpecificViewController: SpecificViewDelegate {
     func favorites() {
         // 즐겨찾기 추가
-        if !FavoriteViewModel.checkFavorite(specificData.addr) {
+        if !viewModel.checkFavorite(specificData.addr) {
             favorite.isAdded = true
-            FavoriteViewModel.addFavoriteEntity(favorite)
+            viewModel.addFavoriteEntity(favorite)
            // FavoriteManager.favoriteList.append(favorite!)
             showToast(" 즐겨찾기에 추가되었습니다. ")
             specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
@@ -74,7 +75,7 @@ extension SpecificViewController: SpecificViewDelegate {
         else {
             favorite.isAdded = false
             specificView.starButton.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
-            FavoriteViewModel.removeFavoriteEntity(favorite)
+            viewModel.removeFavoriteEntity(favorite)
            // FavoriteManager.favoriteList.removeAll { $0.data.addr == favorite.data.addr }
             showToast(" 즐겨찾기에서 삭제되었습니다. ")
         }
