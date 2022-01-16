@@ -10,12 +10,12 @@ import Then
 import SnapKit
 
 class FavoritesViewController: UIViewController {
-    static var favorites: [Favorite] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpFavoritesView()
         loadFavorites()
+        configureObserver()
     }
     
     private let emptyLabel = UILabel().then {
@@ -47,13 +47,22 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-    private func loadFavorites() {
-        guard let data = UserDefaults.standard.value(forKey: "favorites") as? Data else {
-            return
+    private func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ob), name: Notification.Name("ob"), object: nil)
+    }
+    
+    @objc private func ob() {
+        print("옵저버 포착")
+        favoritesTableView.reloadData()
+        if FavoriteViewModel.getFavoriteList().isEmpty {
+            showEmptyLabel(true)
         }
-        FavoritesViewController.favorites = try! PropertyListDecoder().decode([Favorite].self, from: data)
-        
-        if FavoritesViewController.favorites.isEmpty {
+    }
+    
+    private func loadFavorites() {
+        let favorites = FavoriteViewModel.getFavoriteList()
+        print(favorites)
+        if favorites.isEmpty {
             showEmptyLabel(true)
         }
         else {
@@ -72,8 +81,8 @@ extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let stationName = FavoritesViewController.favorites[indexPath.row].data.name
-        let stationAddr = FavoritesViewController.favorites[indexPath.row].data.addr
+        let stationName = FavoriteViewModel.getFavoriteList()[indexPath.row].data.name
+        let stationAddr = FavoriteViewModel.getFavoriteList()[indexPath.row].data.addr
         let vc = SpecificViewController()
         
         UreaSolutionManager.shared.search(stationName) { [weak self] result in
@@ -93,21 +102,23 @@ extension FavoritesViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FavoritesViewController.favorites.count
+        print("numberOfRowsInSection")
+        return FavoriteViewModel.getFavoriteListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.idenrifier, for: indexPath) as! LocationTableViewCell
-        cell.configure(with: FavoritesViewController.favorites[indexPath.row].data)
+        print("cellForRowAt")
+        cell.configure(with: FavoriteViewModel.getFavoriteList()[indexPath.row].data)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            FavoritesViewController.favorites.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
-            if FavoritesViewController.favorites.isEmpty {
+            let beRemoved = FavoriteViewModel.getFavoriteList()[indexPath.row]
+            FavoriteViewModel.removeFavoriteEntity(beRemoved)
+            tableView.deleteRows(at: [indexPath], with: .fade) // 여기서 앱 크래시
+            if FavoriteViewModel.getFavoriteList().isEmpty {
                 showEmptyLabel(true)
             }
         }
