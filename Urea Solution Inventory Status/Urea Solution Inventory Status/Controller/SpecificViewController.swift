@@ -10,10 +10,15 @@ import SnapKit
 import KakaoSDKNavi
 import Then
 
+protocol SpecificViewControllerDelegate: AnyObject {
+    func updateUI()
+}
+
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
     private let specificView = SpecificView()
     private var favorite: Favorite!
+    weak var delegate: SpecificViewControllerDelegate?
     
     private let toastLabel = UILabel().then {
         $0.backgroundColor = .black.withAlphaComponent(0.6)
@@ -83,6 +88,8 @@ extension SpecificViewController: SpecificViewDelegate {
             showToast(" 즐겨찾기에서 삭제되었습니다. ")
         }
         UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
+        print(delegate) // nil
+        delegate?.updateUI()
     }
     
     func kakaoNavi() {

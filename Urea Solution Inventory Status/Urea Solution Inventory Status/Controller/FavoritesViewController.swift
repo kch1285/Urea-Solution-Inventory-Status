@@ -33,6 +33,8 @@ class FavoritesViewController: UIViewController {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         title = "즐겨찾기"
         navigationController?.navigationBar.prefersLargeTitles = true
+        let spVC = SpecificViewController()
+        spVC.delegate = self
         
         view.addSubview(favoritesTableView)
         favoritesTableView.dataSource = self
@@ -111,5 +113,12 @@ extension FavoritesViewController: UITableViewDataSource {
                 showEmptyLabel(true)
             }
         }
+    }
+}
+
+
+extension FavoritesViewController: SpecificViewControllerDelegate {
+    func updateUI() {
+        loadFavorites()
     }
 }
