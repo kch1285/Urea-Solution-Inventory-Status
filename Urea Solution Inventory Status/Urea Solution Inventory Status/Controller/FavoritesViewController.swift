@@ -10,7 +10,7 @@ import Then
 import SnapKit
 
 class FavoritesViewController: UIViewController {
-    
+    private let viewModel = FavoriteViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpFavoritesView()
@@ -54,13 +54,13 @@ class FavoritesViewController: UIViewController {
     @objc private func ob() {
         print("옵저버 포착")
         favoritesTableView.reloadData()
-        if FavoriteViewModel.getFavoriteList().isEmpty {
+        if viewModel.getFavoriteList().isEmpty {
             showEmptyLabel(true)
         }
     }
     
     private func loadFavorites() {
-        let favorites = FavoriteViewModel.getFavoriteList()
+        let favorites = viewModel.getFavoriteList()
         print(favorites)
         if favorites.isEmpty {
             showEmptyLabel(true)
@@ -81,8 +81,8 @@ extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let stationName = FavoriteViewModel.getFavoriteList()[indexPath.row].data.name
-        let stationAddr = FavoriteViewModel.getFavoriteList()[indexPath.row].data.addr
+        let stationName = viewModel.getFavoriteList()[indexPath.row].data.name
+        let stationAddr = viewModel.getFavoriteList()[indexPath.row].data.addr
         let vc = SpecificViewController()
         
         UreaSolutionManager.shared.search(stationName) { [weak self] result in
@@ -103,22 +103,21 @@ extension FavoritesViewController: UITableViewDelegate {
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowsInSection")
-        return FavoriteViewModel.getFavoriteListCount()
+        return viewModel.getFavoriteListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.idenrifier, for: indexPath) as! LocationTableViewCell
         print("cellForRowAt")
-        cell.configure(with: FavoriteViewModel.getFavoriteList()[indexPath.row].data)
+        cell.configure(with: viewModel.getFavoriteList()[indexPath.row].data)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let beRemoved = FavoriteViewModel.getFavoriteList()[indexPath.row]
-            FavoriteViewModel.removeFavoriteEntity(beRemoved)
-            tableView.deleteRows(at: [indexPath], with: .fade) // 여기서 앱 크래시
-            if FavoriteViewModel.getFavoriteList().isEmpty {
+            let beRemoved = viewModel.getFavoriteList()[indexPath.row]
+            viewModel.removeFavoriteEntity(beRemoved)
+            if viewModel.getFavoriteList().isEmpty {
                 showEmptyLabel(true)
             }
         }

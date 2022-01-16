@@ -18,7 +18,7 @@ class FavoriteViewModel {
         }
     }
     
-    static func getFavoriteList() -> [Favorite] {
+    func getFavoriteList() -> [Favorite] {
         guard let data = UserDefaults.standard.value(forKey: "favorites") as? Data else {
             return []
         }
@@ -31,25 +31,25 @@ class FavoriteViewModel {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoriteViewModel.favoriteList), forKey: "favorites")
     }
     
-    static func checkFavorite(_ address: String) -> Bool {
-        if FavoriteViewModel.getFavoriteList().filter({ $0.data.addr == address }).count == 1 {
+    func checkFavorite(_ address: String) -> Bool {
+        if getFavoriteList().filter({ $0.data.addr == address }).count == 1 {
             return true
         }
         return false
     }
     
-    static func addFavoriteEntity(_ favorite: Favorite) {
+    func addFavoriteEntity(_ favorite: Favorite) {
         print("addFavoriteEntity")
         FavoriteViewModel.favoriteList.append(favorite)
     }
     
-    static func removeFavoriteEntity(_ favorite: Favorite) {
+    func removeFavoriteEntity(_ favorite: Favorite) {
         print("removeFavoriteEntity")
         FavoriteViewModel.favoriteList.removeAll { $0.data.addr == favorite.data.addr }
     }
     
-    static func getFavoriteListCount() -> Int {
-        print("getFavoriteListCount \(FavoriteViewModel.getFavoriteList().count)")
-        return FavoriteViewModel.getFavoriteList().count
+    func getFavoriteListCount() -> Int {
+        print("getFavoriteListCount \(getFavoriteList().count)")
+        return getFavoriteList().count
     }
 }
