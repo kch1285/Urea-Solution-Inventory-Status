@@ -10,6 +10,7 @@
 		431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BA278182A000683838 /* FavoritesViewController.swift */; };
 		431AB3BD2781855300683838 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AB3BC2781855300683838 /* Favorite.swift */; };
 		4338CE7A278167D400FBA2BC /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4348ACA42793DF9E00BAC65F /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348ACA32793DF9E00BAC65F /* FavoriteViewModel.swift */; };
 		435325352750C8AB004D9162 /* UreaSolutionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325342750C8AB004D9162 /* UreaSolutionManager.swift */; };
 		435325372750CFBE004D9162 /* UreaSolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435325362750CFBE004D9162 /* UreaSolutionResponse.swift */; };
 		4353253B2750F5A7004D9162 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353253A2750F5A7004D9162 /* LocationViewController.swift */; };
@@ -55,6 +56,7 @@
 		4338CE702781679A00FBA2BC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338CE732781679F00FBA2BC /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338CE742781679F00FBA2BC /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4348ACA32793DF9E00BAC65F /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		435325342750C8AB004D9162 /* UreaSolutionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionManager.swift; sourceTree = "<group>"; };
 		435325362750CFBE004D9162 /* UreaSolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UreaSolutionResponse.swift; sourceTree = "<group>"; };
 		4353253A2750F5A7004D9162 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 				43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4348ACA527940E8000BAC65F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4348ACA32793DF9E00BAC65F /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4353252F2750C72B004D9162 /* Controller */ = {
@@ -177,6 +187,7 @@
 			children = (
 				43A1E4B42750C5FB001815DD /* Info.plist */,
 				430E3617275B4C0D00DF3977 /* Resources */,
+				4348ACA527940E8000BAC65F /* ViewModel */,
 				435325312750C73E004D9162 /* Model */,
 				4353252F2750C72B004D9162 /* Controller */,
 			);
@@ -357,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */,
+				4348ACA42793DF9E00BAC65F /* FavoriteViewModel.swift in Sources */,
 				43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */,
 				43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */,
 				4353254527578831004D9162 /* UIViewEx.swift in Sources */,

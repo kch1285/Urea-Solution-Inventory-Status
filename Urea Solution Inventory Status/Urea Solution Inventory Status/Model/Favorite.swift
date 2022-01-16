@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Favorite: Codable {
+struct Favorite: Codable, Equatable {
+    static func == (lhs: Favorite, rhs: Favorite) -> Bool {
+        return lhs.data.addr == rhs.data.addr
+    }
+    
     let data: UreaSolutionData
     var isAdded: Bool
 }

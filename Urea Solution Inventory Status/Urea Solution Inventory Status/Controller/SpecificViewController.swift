@@ -10,15 +10,10 @@ import SnapKit
 import KakaoSDKNavi
 import Then
 
-protocol SpecificViewControllerDelegate: AnyObject {
-    func updateUI()
-}
-
 class SpecificViewController: UIViewController {
     var specificData: UreaSolutionData!
     private let specificView = SpecificView()
     private var favorite: Favorite!
-    weak var delegate: SpecificViewControllerDelegate?
     
     private let toastLabel = UILabel().then {
         $0.backgroundColor = .black.withAlphaComponent(0.6)
@@ -39,7 +34,7 @@ class SpecificViewController: UIViewController {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)
         specificView.delegate = self
-        favorite = Favorite(data: specificData, isAdded: checkFavorite())
+        favorite = Favorite(data: specificData, isAdded: FavoriteViewModel.checkFavorite(specificData.addr))
         specificView.configure(with: favorite)
         
         specificView.snp.makeConstraints { make in
@@ -62,21 +57,16 @@ class SpecificViewController: UIViewController {
         }
     }
     
-    private func checkFavorite() -> Bool {
-        if FavoritesViewController.favorites.filter({ $0.data.addr == specificData.addr }).count == 1 {
-            return true
-        }
-        return false
-    }
 }
 
 //MARK: - SpecificViewDelegate
 extension SpecificViewController: SpecificViewDelegate {
     func favorites() {
         // 즐겨찾기 추가
-        if !checkFavorite() {
+        if !FavoriteViewModel.checkFavorite(specificData.addr) {
             favorite.isAdded = true
-            FavoritesViewController.favorites.append(favorite!)
+            FavoriteViewModel.addFavoriteEntity(favorite)
+           // FavoriteManager.favoriteList.append(favorite!)
             showToast(" 즐겨찾기에 추가되었습니다. ")
             specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
         }
@@ -84,12 +74,10 @@ extension SpecificViewController: SpecificViewDelegate {
         else {
             favorite.isAdded = false
             specificView.starButton.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
-            FavoritesViewController.favorites.removeAll { $0.data.addr == favorite.data.addr }
+            FavoriteViewModel.removeFavoriteEntity(favorite)
+           // FavoriteManager.favoriteList.removeAll { $0.data.addr == favorite.data.addr }
             showToast(" 즐겨찾기에서 삭제되었습니다. ")
         }
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoritesViewController.favorites), forKey: "favorites")
-        print(delegate) // nil
-        delegate?.updateUI()
     }
     
     func kakaoNavi() {
