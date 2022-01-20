@@ -20,7 +20,7 @@
 
 
 ## 개발스택
-`Swift`, `MVVM`, `SnapKit`, `Then`
+`Swift`, `MVVM`, `Alamofire`, `SnapKit`, `Then`
 
 <br />
 
