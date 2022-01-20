@@ -85,7 +85,7 @@ extension FavoritesViewController: UITableViewDelegate {
         let stationAddr = viewModel.getFavoriteList()[indexPath.row].data.addr
         let vc = SpecificViewController()
         
-        UreaSolutionManager.shared.search(stationName) { [weak self] result in
+        UreaSolutionManager.shared.fetchInventory(station: stationName) { [weak self] result in
             switch result {
             case .success(let data):
                 vc.specificData = data.filter { $0.name == stationName && $0.addr == stationAddr }.first

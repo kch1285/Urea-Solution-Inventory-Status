@@ -43,9 +43,10 @@ class SpecificView: UIView {
     }
     
     private let infoLabel = UILabel().then {
+        $0.text = Constants.text
         $0.textAlignment = .center
         $0.numberOfLines = 0
-        $0.font = UIFont(name: "GowunBatang-Regular", size: 20)
+        $0.font = UIFont(name: "GowunBatang-Regular", size: 15)
     }
     
     private let priceLabel = UILabel().then {
@@ -160,6 +161,12 @@ class SpecificView: UIView {
             make.size.equalTo(buttonSize)
             make.top.equalTo(naviButton)
             make.centerX.equalToSuperview().offset(buttonSize * 2)
+        }
+        
+        addSubview(infoLabel)
+        infoLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(addrLabel)
+            make.top.equalTo(callButton.snp.bottom).offset(10)
         }
     }
     

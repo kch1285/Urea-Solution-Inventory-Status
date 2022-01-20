@@ -8,12 +8,7 @@
 import Foundation
 
 struct UreaSolutionResponse: Decodable {
-    let totalCount: Int
-    let currentCount: Int
     let data: [UreaSolutionData]
-    let page: Int
-    let perPage: Int
-    let matchCount: Int
 }
 
 struct UreaSolutionData: Codable {

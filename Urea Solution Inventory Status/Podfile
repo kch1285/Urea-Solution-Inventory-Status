@@ -8,7 +8,7 @@ target 'Urea Solution Inventory Status' do
 
   # Pods for Urea Solution Inventory Status
 pod 'SnapKit'
-pod 'lottie-ios'
+pod 'Alamofire', '~> 5.5'
 pod 'KakaoSDKNavi'
 pod 'Then'
 end

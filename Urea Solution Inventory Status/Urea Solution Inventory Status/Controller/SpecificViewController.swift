@@ -31,6 +31,15 @@ class SpecificViewController: UIViewController {
         setUpSpecificView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("SpecificViewController - viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("SpecificViewController - viewDidDisappear")
+    }
     private func setUpSpecificView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)
@@ -67,7 +76,6 @@ extension SpecificViewController: SpecificViewDelegate {
         if !viewModel.checkFavorite(specificData.addr) {
             favorite.isAdded = true
             viewModel.addFavoriteEntity(favorite)
-           // FavoriteManager.favoriteList.append(favorite!)
             showToast(" 즐겨찾기에 추가되었습니다. ")
             specificView.starButton.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
         }
@@ -76,7 +84,6 @@ extension SpecificViewController: SpecificViewDelegate {
             favorite.isAdded = false
             specificView.starButton.setBackgroundImage(UIImage(named: "emptyStar"), for: .normal)
             viewModel.removeFavoriteEntity(favorite)
-           // FavoriteManager.favoriteList.removeAll { $0.data.addr == favorite.data.addr }
             showToast(" 즐겨찾기에서 삭제되었습니다. ")
         }
     }
