@@ -37,18 +37,11 @@ class MainViewController: UIViewController {
         $0.setRoundedRectangle()
     }
     
-    private let infoLabel = UILabel().then {
-        $0.text = Constants.text
-        $0.numberOfLines = 0
-        $0.textAlignment = .center
-        $0.font = UIFont(name: "GowunBatang-Regular", size: 13)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpMainView()
-        navigationBarSetting()
+     //   navigationBarSetting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,14 +124,6 @@ class MainViewController: UIViewController {
                     make.top.equalTo(searchField.snp.bottom).offset(buttonSize * 3 + 40)
                     make.leading.equalToSuperview().offset(10 * (index - 14) + (Int(buttonSize) * (index - 15)))
                 }
-                if index == 15 {
-                    view.addSubview(infoLabel)
-                    infoLabel.snp.makeConstraints { make in
-                        make.top.equalTo(button.snp.bottom).offset(10)
-                        make.trailing.equalToSuperview().offset(-10)
-                        make.leading.equalTo(button)
-                    }
-                }
             }
         }
     }
@@ -166,6 +151,7 @@ class MainViewController: UIViewController {
         
         let vc = LocationViewController()
         view.endEditing(true)
+        
         UreaSolutionManager.shared.fetchInventory(about: city) { [weak self] result in
             switch result {
             case .success(let data):
@@ -195,7 +181,7 @@ class MainViewController: UIViewController {
         
         let vc = LocationViewController()
         view.endEditing(true)
-        UreaSolutionManager.shared.search(station) { [weak self] result in
+        UreaSolutionManager.shared.fetchInventory(station: station) { [weak self] result in
             switch result {
             case .success(let data):
                 vc.data = data

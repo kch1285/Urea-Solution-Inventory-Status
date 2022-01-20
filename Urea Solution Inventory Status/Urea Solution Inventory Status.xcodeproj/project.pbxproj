@@ -24,6 +24,7 @@
 		43A1E4B02750C5FB001815DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4AF2750C5FB001815DD /* Assets.xcassets */; };
 		43A1E4B32750C5FB001815DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1E4B12750C5FB001815DD /* LaunchScreen.storyboard */; };
 		43B8A1FFB35887933432824D /* Pods_Urea_Solution_Inventory_Status.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBA371FA621D0BD05419C7C /* Pods_Urea_Solution_Inventory_Status.framework */; };
+		43D64B72279988F400703982 /* ServiceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D64B71279988F400703982 /* ServiceKey.swift */; };
 		43D862E4275F54B9004F0D15 /* SpecificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E3275F54B9004F0D15 /* SpecificViewController.swift */; };
 		43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862E9276212A4004F0D15 /* SpecificView.swift */; };
 		43D862EE27621FBE004F0D15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D862ED27621FBE004F0D15 /* Constants.swift */; };
@@ -73,6 +74,7 @@
 		43A1E4B42750C5FB001815DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43B2F0FF2772DD4B00E9289E /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9/개발/TMapSDK.framework"; sourceTree = "<group>"; };
 		43B2F10C2772DFD000E9289E /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../../../../Downloads/[iOS_SWIFT]TmapSDK_2.9 2/개발/TMapSDK.framework"; sourceTree = "<group>"; };
+		43D64B71279988F400703982 /* ServiceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceKey.swift; sourceTree = "<group>"; };
 		43D862E3275F54B9004F0D15 /* SpecificViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificViewController.swift; sourceTree = "<group>"; };
 		43D862E9276212A4004F0D15 /* SpecificView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificView.swift; sourceTree = "<group>"; };
 		43D862ED27621FBE004F0D15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 		435325312750C73E004D9162 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				435325342750C8AB004D9162 /* UreaSolutionManager.swift */,
 				435325362750CFBE004D9162 /* UreaSolutionResponse.swift */,
 				431AB3BC2781855300683838 /* Favorite.swift */,
 			);
@@ -185,6 +186,7 @@
 		43A1E4A52750C5F8001815DD /* Urea Solution Inventory Status */ = {
 			isa = PBXGroup;
 			children = (
+				43D64B702799888A00703982 /* Network */,
 				43A1E4B42750C5FB001815DD /* Info.plist */,
 				430E3617275B4C0D00DF3977 /* Resources */,
 				4348ACA527940E8000BAC65F /* ViewModel */,
@@ -192,6 +194,15 @@
 				4353252F2750C72B004D9162 /* Controller */,
 			);
 			path = "Urea Solution Inventory Status";
+			sourceTree = "<group>";
+		};
+		43D64B702799888A00703982 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				435325342750C8AB004D9162 /* UreaSolutionManager.swift */,
+				43D64B71279988F400703982 /* ServiceKey.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		43D862E5275F54CA004F0D15 /* Cell */ = {
@@ -369,6 +380,7 @@
 			files = (
 				431AB3BB278182A000683838 /* FavoritesViewController.swift in Sources */,
 				4348ACA42793DF9E00BAC65F /* FavoriteViewModel.swift in Sources */,
+				43D64B72279988F400703982 /* ServiceKey.swift in Sources */,
 				43A1E4AB2750C5F8001815DD /* MainViewController.swift in Sources */,
 				43D862EA276212A4004F0D15 /* SpecificView.swift in Sources */,
 				4353254527578831004D9162 /* UIViewEx.swift in Sources */,
