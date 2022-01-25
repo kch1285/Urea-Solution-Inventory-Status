@@ -11,7 +11,6 @@ class FavoriteViewModel {
     static var favoriteList: [Favorite] = [] {
         didSet {
             if favoriteList != oldValue {
-                print("didSet")
                 setFavoriteList()
                 NotificationCenter.default.post(name: Notification.Name("ob"), object: nil)
             }
@@ -27,7 +26,6 @@ class FavoriteViewModel {
     }
     
     static private func setFavoriteList() {
-        print("setFavoriteList")
         UserDefaults.standard.set(try? PropertyListEncoder().encode(FavoriteViewModel.favoriteList), forKey: "favorites")
     }
     
@@ -39,17 +37,14 @@ class FavoriteViewModel {
     }
     
     func addFavoriteEntity(_ favorite: Favorite) {
-        print("addFavoriteEntity")
         FavoriteViewModel.favoriteList.append(favorite)
     }
     
     func removeFavoriteEntity(_ favorite: Favorite) {
-        print("removeFavoriteEntity")
         FavoriteViewModel.favoriteList.removeAll { $0.data.addr == favorite.data.addr }
     }
     
     func getFavoriteListCount() -> Int {
-        print("getFavoriteListCount \(getFavoriteList().count)")
         return getFavoriteList().count
     }
 }
