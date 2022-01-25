@@ -22,16 +22,19 @@ class UreaSolutionManager {
             "perPage": 9999
           ]
 
-        AF.request(baseURL, parameters: parameters)
-            .validate()
-            .responseDecodable(of: UreaSolutionResponse.self) { response in
-                guard let data = response.value?.data, response.error == nil else {
-                    completion(.failure(response.error!))
-                    return
-                }
-                var fetchResults: [UreaSolutionData] = []
-                fetchResults.append(contentsOf: data)
-                completion(.success(fetchResults))
+        
+        AF.request(baseURL, parameters: parameters) { urlRequest in
+            urlRequest.timeoutInterval = 5
+        }
+        .validate()
+        .responseDecodable(of: UreaSolutionResponse.self) { response in
+            guard let data = response.value?.data, response.error == nil else {
+                completion(.failure(response.error!))
+                return
             }
+            var fetchResults: [UreaSolutionData] = []
+            fetchResults.append(contentsOf: data)
+            completion(.success(fetchResults))
+        }
     }
 }

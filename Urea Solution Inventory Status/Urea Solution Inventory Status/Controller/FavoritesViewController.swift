@@ -52,7 +52,6 @@ class FavoritesViewController: UIViewController {
     }
     
     @objc private func ob() {
-        print("옵저버 포착")
         favoritesTableView.reloadData()
         if viewModel.getFavoriteList().isEmpty {
             showEmptyLabel(true)
@@ -61,7 +60,6 @@ class FavoritesViewController: UIViewController {
     
     private func loadFavorites() {
         let favorites = viewModel.getFavoriteList()
-        print(favorites)
         if favorites.isEmpty {
             showEmptyLabel(true)
         }
@@ -102,7 +100,6 @@ extension FavoritesViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection")
         return viewModel.getFavoriteListCount()
     }
     

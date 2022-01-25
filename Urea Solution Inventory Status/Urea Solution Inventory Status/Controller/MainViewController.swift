@@ -18,6 +18,8 @@ class MainViewController: UIViewController {
         "광주", "제주"
     ]
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large)
+    
     private let favoritesButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "yellowStar"), for: .normal)
     }
@@ -57,6 +59,11 @@ class MainViewController: UIViewController {
     private func setUpMainView() {
         let buttonSize = (view.frame.size.width - 60) / 5
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         
         view.addSubview(searchField)
         searchField.delegate = self
@@ -151,6 +158,7 @@ class MainViewController: UIViewController {
         
         let vc = LocationViewController()
         view.endEditing(true)
+        loadingIndicator.startAnimating()
         
         UreaSolutionManager.shared.fetchInventory(about: city) { [weak self] result in
             switch result {
@@ -163,11 +171,13 @@ class MainViewController: UIViewController {
                     // URLSession 작업은 글로벌 큐에서 동작한다.
                     // 컴플리션 핸들러 동작을 따로 어디서 처리할지 정하지 않으면 현재 쓰레드(글로벌)에서 동작하므로
                     // 푸쉬 작업도 글로벌 큐에서 동작한다 -> 메인 쓰레드로 따로 처리해야한다.
+                    self?.loadingIndicator.stopAnimating()
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
                 
             case .failure(_):
                 DispatchQueue.main.async {
+                    self?.loadingIndicator.stopAnimating()
                     self?.showNetworkAlert()
                 }
             }
@@ -181,17 +191,20 @@ class MainViewController: UIViewController {
         
         let vc = LocationViewController()
         view.endEditing(true)
+        loadingIndicator.startAnimating()
         UreaSolutionManager.shared.fetchInventory(station: station) { [weak self] result in
             switch result {
             case .success(let data):
                 vc.data = data
                 vc.searchResult = station
                 DispatchQueue.main.async {
+                    self?.loadingIndicator.stopAnimating()
                     self?.searchField.text = ""
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             case .failure(_):
                 DispatchQueue.main.async {
+                    self?.loadingIndicator.stopAnimating()
                     self?.showNetworkAlert()
                 }
             }

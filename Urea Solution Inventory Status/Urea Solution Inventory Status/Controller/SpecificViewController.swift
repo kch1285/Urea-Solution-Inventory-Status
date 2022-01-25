@@ -31,15 +31,6 @@ class SpecificViewController: UIViewController {
         setUpSpecificView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("SpecificViewController - viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("SpecificViewController - viewDidDisappear")
-    }
     private func setUpSpecificView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(specificView)

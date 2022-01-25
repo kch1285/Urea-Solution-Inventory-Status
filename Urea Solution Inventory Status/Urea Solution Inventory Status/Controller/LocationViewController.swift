@@ -49,17 +49,6 @@ class LocationViewController: UIViewController {
         setUpTableView()
     }
     
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("LocationViewController - viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("LocationViewController - viewDidDisappear")
-    }
-    
     private func setUpTableView() {
         view.setGradient(colors: [UIColor(named: "gradient_start")!.cgColor, UIColor(named: "gradient_end")!.cgColor])
         view.addSubview(tableView)
